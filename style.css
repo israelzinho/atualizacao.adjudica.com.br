@@ -1744,6 +1744,8 @@ footer .btn-secondary:hover {
 }
 
 @media (max-width: 767px) {
+
+    /* Navbar */
     .navbar .nav-links {
         display: none;
         flex-direction: column;
@@ -1754,6 +1756,7 @@ footer .btn-secondary:hover {
         background-color: var(--color-white);
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
         padding: 15px 0;
+        z-index: 1000;
     }
 
     .navbar .nav-links.active {
@@ -1783,25 +1786,39 @@ footer .btn-secondary:hover {
         display: none;
     }
 
-    /* Hero Section Mobile */
+    /* ===== HERO SECTION MOBILE ===== */
     .hero-content-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
+        display: flex;
+        /* adicionado */
+        flex-direction: column;
+        /* força empilhamento vertical */
+        align-items: center;
+        /* centraliza tudo */
         text-align: center;
+        gap: 30px;
+        padding: 1.5rem;
     }
 
     .hero-content-column {
-        text-align: center;
+        width: 100%;
+    }
+
+    .hero-image-column {
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
 
     .hero-image-card {
-        max-width: 280px;
+        max-width: 300px;
         margin: 0 auto;
-        padding: 20px;
+        padding: 10px;
     }
 
     .hero-lawyers-img {
-        max-width: 220px;
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
     }
 
     .hero-image-info h3 {
@@ -1813,156 +1830,168 @@ footer .btn-secondary:hover {
     }
 
     .hero-title {
-        font-size: 38px;
+        font-size: 30px;
+        line-height: 1.2;
     }
 
     .hero-subtitle {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .hero-description {
-        font-size: 16px;
+        font-size: 15px;
+        max-width: 90%;
+        margin: 0 auto 25px auto;
     }
 
     .hero-buttons {
         flex-direction: column;
         justify-content: center;
-    }
-
-    .section-title {
-        font-size: 30px;
-    }
-
-    .section-subtitle {
-        font-size: 16px;
-    }
-
-    .approach-title,
-    .form-title,
-    .info-title {
-        font-size: 26px;
-    }
-
-    .mvv-item h3,
-    .service-card h3,
-    .lawyer-info h3 {
-        font-size: 20px;
-    }
-
-    .profile-name {
-        font-size: 28px;
-    }
-
-    .profile-title {
-        font-size: 18px;
-    }
-
-    .profile-profession {
-        font-size: 16px;
-    }
-
-    .profile-sections {
-        grid-template-columns: 1fr;
-    }
-
-    .profile-cta {
-        flex-direction: column;
-    }
-
-    .footer-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .footer-bottom .container {
-        flex-direction: column;
-    }
-
-    .footer-links-bottom {
-        flex-direction: column;
+        align-items: center;
         gap: 10px;
     }
 
-    .dropdown-content {
-        position: static;
-        width: 100%;
-        box-shadow: none;
-        border: none;
-        margin-top: 0;
+    .hero-buttons a {
+        width: 80%;
+        text-align: center;
     }
+}
 
-    .dropdown:hover .dropdown-content {
-        display: none;
-    }
 
-    .dropdown.active .dropdown-content {
-        display: block;
-    }
+.section-title {
+    font-size: 30px;
+}
 
-    .dropdown .dropbtn i {
-        transform: rotate(0deg);
-        transition: transform 0.3s ease;
-    }
+.section-subtitle {
+    font-size: 16px;
+}
 
-    .dropdown.active .dropbtn i {
-        transform: rotate(180deg);
-    }
+.approach-title,
+.form-title,
+.info-title {
+    font-size: 26px;
+}
 
-    /* Responsividade para seções organizadas */
-    .organized-section {
-        padding: 40px 0;
-    }
+.mvv-item h3,
+.service-card h3,
+.lawyer-info h3 {
+    font-size: 20px;
+}
 
-    .organized-section h3 {
-        font-size: 26px;
-        flex-direction: column;
-        gap: 10px;
-    }
+.profile-name {
+    font-size: 28px;
+}
 
-    .timeline-organized {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
+.profile-title {
+    font-size: 18px;
+}
 
-    .timeline-card {
-        padding: 25px;
-    }
+.profile-profession {
+    font-size: 16px;
+}
 
-    .cases-organized {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
+.profile-sections {
+    grid-template-columns: 1fr;
+}
 
-    .cert-organized {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 15px;
-    }
+.profile-cta {
+    flex-direction: column;
+}
 
-    .sectors-organized {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
+.footer-grid {
+    grid-template-columns: 1fr;
+}
 
-    .contact-buttons-organized {
-        flex-direction: column;
-        align-items: center;
-    }
+.footer-bottom .container {
+    flex-direction: column;
+}
 
-    .contact-buttons-organized .btn-primary,
-    .contact-buttons-organized .btn-secondary {
-        width: 100%;
-        max-width: 280px;
-    }
+.footer-links-bottom {
+    flex-direction: column;
+    gap: 10px;
+}
 
-    .team-navigation-organized {
-        flex-direction: column;
-        align-items: center;
-    }
+.dropdown-content {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    border: none;
+    margin-top: 0;
+}
 
-    .team-navigation-organized .btn-primary,
-    .team-navigation-organized .btn-secondary {
-        width: 100%;
-        max-width: 280px;
-    }
+.dropdown:hover .dropdown-content {
+    display: none;
+}
+
+.dropdown.active .dropdown-content {
+    display: block;
+}
+
+.dropdown .dropbtn i {
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
+}
+
+.dropdown.active .dropbtn i {
+    transform: rotate(180deg);
+}
+
+/* Responsividade para seções organizadas */
+.organized-section {
+    padding: 40px 0;
+}
+
+.organized-section h3 {
+    font-size: 26px;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.timeline-organized {
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.timeline-card {
+    padding: 25px;
+}
+
+.cases-organized {
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.cert-organized {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.sectors-organized {
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.contact-buttons-organized {
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-buttons-organized .btn-primary,
+.contact-buttons-organized .btn-secondary {
+    width: 100%;
+    max-width: 280px;
+}
+
+.team-navigation-organized {
+    flex-direction: column;
+    align-items: center;
+}
+
+.team-navigation-organized .btn-primary,
+.team-navigation-organized .btn-secondary {
+    width: 100%;
+    max-width: 280px;
+}
 }
 
 }
