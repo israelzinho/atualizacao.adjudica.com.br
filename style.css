@@ -1684,6 +1684,53 @@ footer .btn-secondary:hover {
     margin-top: 10px;
 }
 
+
+/* === FOOTER RESPONSIVO AJUSTADO === */
+
+/* Base (mobile): 1 coluna */
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+}
+
+/* Tablet: 2 colunas */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 50px;
+    }
+}
+
+/* Desktop: 4 colunas equilibradas e centralizadas */
+@media (min-width: 1024px) {
+    .footer-grid {
+        grid-template-columns: repeat(4, minmax(220px, 1fr));
+        gap: 60px;
+        max-width: 1200px;
+        margin: 0 auto;
+        align-items: flex-start;
+    }
+
+    footer .container {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 0 40px;
+        box-sizing: border-box;
+    }
+}
+
+/* Pequenos ajustes visuais */
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.footer-col h4 {
+    margin-bottom: 10px;
+}
+
 /* Animações */
 @keyframes bounce {
 
