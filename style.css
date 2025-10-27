@@ -1743,252 +1743,282 @@ footer .btn-secondary:hover {
     }
 }
 
-@media (max-width: 767px) {
+/* === AJUSTE TOTAL PARA MOBILE (VERSÃO MELHORADA) === */
+@media (max-width: 768px) {
 
-    /* Navbar */
-    .navbar .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        background-color: var(--color-white);
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        padding: 15px 0;
-        z-index: 1000;
+    /* Garante que o container da seção se adapte */
+    .hero-section {
+        height: auto !important;
+        padding: 60px 20px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
     }
 
-    .navbar .nav-links.active {
-        display: flex;
+    /* Corrige o layout do grid (empilha imagem e texto) */
+    .hero-content-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 25px !important;
     }
 
-    .navbar .nav-links li {
-        width: 100%;
-        text-align: center;
+    /* Ajusta imagem das advogadas */
+    .hero-image-card {
+        width: 90% !important;
+        max-width: 320px !important;
+        margin: 0 auto !important;
     }
 
-    .navbar .nav-links li a {
-        padding: 10px 0;
-        display: block;
+    .hero-lawyers-img {
+        width: 100% !important;
+        height: auto !important;
     }
 
-    .navbar .nav-links li .btn-primary {
-        margin: 15px auto;
-        width: 80%;
+    /* Corrige textos */
+    .hero-content-column {
+        width: 100% !important;
+        max-width: 90% !important;
     }
 
-    .navbar .menu-toggle {
-        display: block;
+    .hero-title {
+        font-size: 30px !important;
+        line-height: 1.2 !important;
     }
 
-    .navbar .logo-text {
-        display: none;
+    .hero-subtitle {
+        font-size: 18px !important;
     }
 
-    /* === RESPONSIVIDADE GERAL (ATÉ TABLET) === */
-    @media (max-width: 992px) {
-
-        .hero-content-grid {
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            text-align: center !important;
-            gap: 30px !important;
-            padding: 1.5rem !important;
-        }
-
-        .hero-title {
-            font-size: 42px !important;
-            line-height: 1.2 !important;
-        }
-
-        .hero-subtitle {
-            font-size: 22px !important;
-        }
-
-        .hero-description {
-            font-size: 17px !important;
-            max-width: 95% !important;
-        }
-
-        .hero-image-card {
-            width: 80% !important;
-            max-width: 360px !important;
-        }
-
-        .hero-lawyers-img {
-            width: 100% !important;
-            height: auto !important;
-        }
-
-        .hero-buttons {
-            flex-direction: column !important;
-            align-items: center !important;
-            gap: 15px !important;
-        }
-
-        .hero-buttons a {
-            width: 80% !important;
-            max-width: 360px !important;
-        }
+    .hero-description {
+        font-size: 15px !important;
+        margin-bottom: 30px !important;
     }
 
-    /* === AJUSTE EXTRA PARA TELAS PEQUENAS (CELULARES) === */
-    @media (max-width: 480px) {
-
-        .hero-title {
-            font-size: 32px !important;
-        }
-
-        .hero-subtitle {
-            font-size: 18px !important;
-        }
-
-        .hero-description {
-            font-size: 15px !important;
-        }
-
-        .hero-image-card {
-            width: 90% !important;
-        }
+    /* Botões empilhados */
+    .hero-buttons {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 15px !important;
     }
 
-
-    .section-title {
-        font-size: 30px;
+    .hero-buttons a {
+        width: 80% !important;
+        max-width: 300px !important;
     }
 
-    .section-subtitle {
-        font-size: 16px;
+    /* Garante que nada vaze pra fora da tela */
+    body,
+    html {
+        overflow-x: hidden !important;
+    }
+}
+
+/* === RESPONSIVIDADE GERAL (ATÉ TABLET) === */
+@media (max-width: 992px) {
+
+    .hero-content-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 30px !important;
+        padding: 1.5rem !important;
     }
 
-    .approach-title,
-    .form-title,
-    .info-title {
-        font-size: 26px;
+    .hero-title {
+        font-size: 42px !important;
+        line-height: 1.2 !important;
     }
 
-    .mvv-item h3,
-    .service-card h3,
-    .lawyer-info h3 {
-        font-size: 20px;
+    .hero-subtitle {
+        font-size: 22px !important;
     }
 
-    .profile-name {
-        font-size: 28px;
+    .hero-description {
+        font-size: 17px !important;
+        max-width: 95% !important;
     }
 
-    .profile-title {
-        font-size: 18px;
+    .hero-image-card {
+        width: 80% !important;
+        max-width: 360px !important;
     }
 
-    .profile-profession {
-        font-size: 16px;
+    .hero-lawyers-img {
+        width: 100% !important;
+        height: auto !important;
     }
 
-    .profile-sections {
-        grid-template-columns: 1fr;
+    .hero-buttons {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 15px !important;
     }
 
-    .profile-cta {
-        flex-direction: column;
+    .hero-buttons a {
+        width: 80% !important;
+        max-width: 360px !important;
+    }
+}
+
+/* === AJUSTE EXTRA PARA TELAS PEQUENAS (CELULARES) === */
+@media (max-width: 480px) {
+
+    .hero-title {
+        font-size: 32px !important;
     }
 
-    .footer-grid {
-        grid-template-columns: 1fr;
+    .hero-subtitle {
+        font-size: 18px !important;
     }
 
-    .footer-bottom .container {
-        flex-direction: column;
+    .hero-description {
+        font-size: 15px !important;
     }
 
-    .footer-links-bottom {
-        flex-direction: column;
-        gap: 10px;
+    .hero-image-card {
+        width: 90% !important;
     }
+}
 
-    .dropdown-content {
-        position: static;
-        width: 100%;
-        box-shadow: none;
-        border: none;
-        margin-top: 0;
-    }
 
-    .dropdown:hover .dropdown-content {
-        display: none;
-    }
+.section-title {
+    font-size: 30px;
+}
 
-    .dropdown.active .dropdown-content {
-        display: block;
-    }
+.section-subtitle {
+    font-size: 16px;
+}
 
-    .dropdown .dropbtn i {
-        transform: rotate(0deg);
-        transition: transform 0.3s ease;
-    }
+.approach-title,
+.form-title,
+.info-title {
+    font-size: 26px;
+}
 
-    .dropdown.active .dropbtn i {
-        transform: rotate(180deg);
-    }
+.mvv-item h3,
+.service-card h3,
+.lawyer-info h3 {
+    font-size: 20px;
+}
 
-    /* Responsividade para seções organizadas */
-    .organized-section {
-        padding: 40px 0;
-    }
+.profile-name {
+    font-size: 28px;
+}
 
-    .organized-section h3 {
-        font-size: 26px;
-        flex-direction: column;
-        gap: 10px;
-    }
+.profile-title {
+    font-size: 18px;
+}
 
-    .timeline-organized {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
+.profile-profession {
+    font-size: 16px;
+}
 
-    .timeline-card {
-        padding: 25px;
-    }
+.profile-sections {
+    grid-template-columns: 1fr;
+}
 
-    .cases-organized {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
+.profile-cta {
+    flex-direction: column;
+}
 
-    .cert-organized {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 15px;
-    }
+.footer-grid {
+    grid-template-columns: 1fr;
+}
 
-    .sectors-organized {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
+.footer-bottom .container {
+    flex-direction: column;
+}
 
-    .contact-buttons-organized {
-        flex-direction: column;
-        align-items: center;
-    }
+.footer-links-bottom {
+    flex-direction: column;
+    gap: 10px;
+}
 
-    .contact-buttons-organized .btn-primary,
-    .contact-buttons-organized .btn-secondary {
-        width: 100%;
-        max-width: 280px;
-    }
+.dropdown-content {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    border: none;
+    margin-top: 0;
+}
 
-    .team-navigation-organized {
-        flex-direction: column;
-        align-items: center;
-    }
+.dropdown:hover .dropdown-content {
+    display: none;
+}
 
-    .team-navigation-organized .btn-primary,
-    .team-navigation-organized .btn-secondary {
-        width: 100%;
-        max-width: 280px;
-    }
+.dropdown.active .dropdown-content {
+    display: block;
+}
+
+.dropdown .dropbtn i {
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
+}
+
+.dropdown.active .dropbtn i {
+    transform: rotate(180deg);
+}
+
+/* Responsividade para seções organizadas */
+.organized-section {
+    padding: 40px 0;
+}
+
+.organized-section h3 {
+    font-size: 26px;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.timeline-organized {
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.timeline-card {
+    padding: 25px;
+}
+
+.cases-organized {
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.cert-organized {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.sectors-organized {
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.contact-buttons-organized {
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-buttons-organized .btn-primary,
+.contact-buttons-organized .btn-secondary {
+    width: 100%;
+    max-width: 280px;
+}
+
+.team-navigation-organized {
+    flex-direction: column;
+    align-items: center;
+}
+
+.team-navigation-organized .btn-primary,
+.team-navigation-organized .btn-secondary {
+    width: 100%;
+    max-width: 280px;
+}
 }
 
 }
