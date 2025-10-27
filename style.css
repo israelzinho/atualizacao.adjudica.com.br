@@ -1496,7 +1496,7 @@ ul {
     color: var(--color-primary-blue);
 }
 
-/* Footer */
+/* Footer ============================================================================================================================================================================== */
 footer {
     background-color: var(--color-primary-blue);
     color: var(--color-white);
@@ -1726,6 +1726,52 @@ footer .btn-secondary:hover {
     }
 }
 
+
+/* === FOOTER RESPONSIVO CORRIGIDO === */
+.footer-grid {
+    display: grid;
+    gap: 40px;
+}
+
+/* Mobile (padrão): 1 coluna */
+@media (max-width: 767px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Tablet: 2 colunas */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 50px;
+    }
+}
+
+/* Desktop: 4 colunas equilibradas */
+@media (min-width: 1024px) {
+    .footer-grid {
+        grid-template-columns: repeat(4, minmax(220px, 1fr));
+        gap: 60px;
+        max-width: 1200px;
+        margin: 0 auto;
+        align-items: flex-start;
+    }
+
+    footer .container {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 0 40px;
+        box-sizing: border-box;
+    }
+}
+
+
+/* /========================================================================================================================================================*/
+
+
+
+
 /* Responsividade */
 @media (min-width: 768px) {
     .navbar .menu-toggle {
@@ -1782,313 +1828,293 @@ footer .btn-secondary:hover {
         margin-top: 40px;
     }
 
-    .footer-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
 
-    .footer-bottom .container {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-}
-
-/* === AJUSTE TOTAL PARA MOBILE (VERSÃO MELHORADA) === */
-@media (max-width: 768px) {
-
-    /* Garante que o container da seção se adapte */
-    .hero-section {
-        height: auto !important;
-        min-height: auto !important;
-        /* Adicione esta */
-        padding-bottom: 40px !important;
-        /* Adicione esta */
-        padding: 60px 20px !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important;
-        text-align: center !important;
-    }
-
+    /* === AJUSTE TOTAL PARA MOBILE (VERSÃO MELHORADA) === */
     @media (max-width: 768px) {
+
+        /* Garante que o container da seção se adapte */
+        .hero-section {
+            height: auto !important;
+            min-height: auto !important;
+            /* Adicione esta */
+            padding-bottom: 40px !important;
+            /* Adicione esta */
+            padding: 60px 20px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
+            text-align: center !important;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content-grid {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: center !important;
+                text-align: center !important;
+                gap: 25px !important;
+            }
+
+            /* garante que a imagem venha primeiro */
+            .hero-image-card {
+                order: -1 !important;
+                width: 100% !important;
+                max-width: 320px !important;
+                margin: 0 auto !important;
+                overflow: visible !important;
+                border-radius: 20px !important;
+                /* mantém o mesmo estilo do desktop */
+                background-color: transparent !important;
+            }
+
+            .hero-lawyers-img {
+                width: 100% !important;
+                height: auto !important;
+                object-fit: contain !important;
+                border-radius: 20px !important;
+                /* bordas arredondadas */
+                display: block;
+                margin: 0 auto;
+            }
+
+            /* garante que o texto venha logo abaixo da imagem */
+            .hero-content-column {
+                order: 2 !important;
+                text-align: center !important;
+                max-width: 90% !important;
+            }
+        }
+
+        .hero-title {
+            font-size: 30px !important;
+            line-height: 1.2 !important;
+        }
+
+        .hero-subtitle {
+            font-size: 18px !important;
+        }
+
+        .hero-description {
+            font-size: 15px !important;
+            margin-bottom: 30px !important;
+        }
+
+        /* Botões empilhados */
+        .hero-buttons {
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 15px !important;
+        }
+
+        .hero-buttons a {
+            width: 80% !important;
+            max-width: 300px !important;
+        }
+
+        /* Garante que nada vaze pra fora da tela */
+        body,
+        html {
+            overflow-x: hidden !important;
+        }
+    }
+
+    /* === RESPONSIVIDADE GERAL (ATÉ TABLET) === */
+    @media (max-width: 992px) {
+
         .hero-content-grid {
             display: flex !important;
             flex-direction: column !important;
             align-items: center !important;
-            justify-content: center !important;
             text-align: center !important;
-            gap: 25px !important;
+            gap: 30px !important;
+            padding: 1.5rem !important;
         }
 
-        /* garante que a imagem venha primeiro */
+        .hero-title {
+            font-size: 42px !important;
+            line-height: 1.2 !important;
+        }
+
+        .hero-subtitle {
+            font-size: 22px !important;
+        }
+
+        .hero-description {
+            font-size: 17px !important;
+            max-width: 95% !important;
+        }
+
         .hero-image-card {
-            order: -1 !important;
-            width: 100% !important;
-            max-width: 320px !important;
-            margin: 0 auto !important;
-            overflow: visible !important;
-            border-radius: 20px !important;
-            /* mantém o mesmo estilo do desktop */
-            background-color: transparent !important;
+            width: 80% !important;
+            max-width: 360px !important;
         }
 
         .hero-lawyers-img {
             width: 100% !important;
             height: auto !important;
-            object-fit: contain !important;
-            border-radius: 20px !important;
-            /* bordas arredondadas */
-            display: block;
-            margin: 0 auto;
         }
 
-        /* garante que o texto venha logo abaixo da imagem */
-        .hero-content-column {
-            order: 2 !important;
-            text-align: center !important;
-            max-width: 90% !important;
+        .hero-buttons {
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 15px !important;
+        }
+
+        .hero-buttons a {
+            width: 80% !important;
+            max-width: 360px !important;
         }
     }
 
-    .hero-title {
-        font-size: 30px !important;
-        line-height: 1.2 !important;
+    /* === AJUSTE EXTRA PARA TELAS PEQUENAS (CELULARES) === */
+    @media (max-width: 480px) {
+
+        .hero-title {
+            font-size: 32px !important;
+        }
+
+        .hero-subtitle {
+            font-size: 18px !important;
+        }
+
+        .hero-description {
+            font-size: 15px !important;
+        }
+
+        .hero-image-card {
+            width: 90% !important;
+        }
     }
 
-    .hero-subtitle {
-        font-size: 18px !important;
+
+    .section-title {
+        font-size: 30px;
     }
 
-    .hero-description {
-        font-size: 15px !important;
-        margin-bottom: 30px !important;
+    .section-subtitle {
+        font-size: 16px;
     }
 
-    /* Botões empilhados */
-    .hero-buttons {
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 15px !important;
+    .approach-title,
+    .form-title,
+    .info-title {
+        font-size: 26px;
     }
 
-    .hero-buttons a {
-        width: 80% !important;
-        max-width: 300px !important;
+    .mvv-item h3,
+    .service-card h3,
+    .lawyer-info h3 {
+        font-size: 20px;
     }
 
-    /* Garante que nada vaze pra fora da tela */
-    body,
-    html {
-        overflow-x: hidden !important;
+    .profile-name {
+        font-size: 28px;
+    }
+
+    .profile-title {
+        font-size: 18px;
+    }
+
+    .profile-profession {
+        font-size: 16px;
+    }
+
+    .profile-sections {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-cta {
+        flex-direction: column;
+    }
+
+
+
+    .dropdown-content {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        border: none;
+        margin-top: 0;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: none;
+    }
+
+    .dropdown.active .dropdown-content {
+        display: block;
+    }
+
+    .dropdown .dropbtn i {
+        transform: rotate(0deg);
+        transition: transform 0.3s ease;
+    }
+
+    .dropdown.active .dropbtn i {
+        transform: rotate(180deg);
+    }
+
+    /* Responsividade para seções organizadas */
+    .organized-section {
+        padding: 40px 0;
+    }
+
+    .organized-section h3 {
+        font-size: 26px;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .timeline-organized {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .timeline-card {
+        padding: 25px;
+    }
+
+    .cases-organized {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .cert-organized {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+    }
+
+    .sectors-organized {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .contact-buttons-organized {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-buttons-organized .btn-primary,
+    .contact-buttons-organized .btn-secondary {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .team-navigation-organized {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .team-navigation-organized .btn-primary,
+    .team-navigation-organized .btn-secondary {
+        width: 100%;
+        max-width: 280px;
     }
 }
 
-/* === RESPONSIVIDADE GERAL (ATÉ TABLET) === */
-@media (max-width: 992px) {
 
-    .hero-content-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        text-align: center !important;
-        gap: 30px !important;
-        padding: 1.5rem !important;
-    }
-
-    .hero-title {
-        font-size: 42px !important;
-        line-height: 1.2 !important;
-    }
-
-    .hero-subtitle {
-        font-size: 22px !important;
-    }
-
-    .hero-description {
-        font-size: 17px !important;
-        max-width: 95% !important;
-    }
-
-    .hero-image-card {
-        width: 80% !important;
-        max-width: 360px !important;
-    }
-
-    .hero-lawyers-img {
-        width: 100% !important;
-        height: auto !important;
-    }
-
-    .hero-buttons {
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 15px !important;
-    }
-
-    .hero-buttons a {
-        width: 80% !important;
-        max-width: 360px !important;
-    }
-}
-
-/* === AJUSTE EXTRA PARA TELAS PEQUENAS (CELULARES) === */
-@media (max-width: 480px) {
-
-    .hero-title {
-        font-size: 32px !important;
-    }
-
-    .hero-subtitle {
-        font-size: 18px !important;
-    }
-
-    .hero-description {
-        font-size: 15px !important;
-    }
-
-    .hero-image-card {
-        width: 90% !important;
-    }
-}
-
-
-.section-title {
-    font-size: 30px;
-}
-
-.section-subtitle {
-    font-size: 16px;
-}
-
-.approach-title,
-.form-title,
-.info-title {
-    font-size: 26px;
-}
-
-.mvv-item h3,
-.service-card h3,
-.lawyer-info h3 {
-    font-size: 20px;
-}
-
-.profile-name {
-    font-size: 28px;
-}
-
-.profile-title {
-    font-size: 18px;
-}
-
-.profile-profession {
-    font-size: 16px;
-}
-
-.profile-sections {
-    grid-template-columns: 1fr;
-}
-
-.profile-cta {
-    flex-direction: column;
-}
-
-.footer-grid {
-    grid-template-columns: 1fr;
-}
-
-.footer-bottom .container {
-    flex-direction: column;
-}
-
-.footer-links-bottom {
-    flex-direction: column;
-    gap: 10px;
-}
-
-.dropdown-content {
-    position: static;
-    width: 100%;
-    box-shadow: none;
-    border: none;
-    margin-top: 0;
-}
-
-.dropdown:hover .dropdown-content {
-    display: none;
-}
-
-.dropdown.active .dropdown-content {
-    display: block;
-}
-
-.dropdown .dropbtn i {
-    transform: rotate(0deg);
-    transition: transform 0.3s ease;
-}
-
-.dropdown.active .dropbtn i {
-    transform: rotate(180deg);
-}
-
-/* Responsividade para seções organizadas */
-.organized-section {
-    padding: 40px 0;
-}
-
-.organized-section h3 {
-    font-size: 26px;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.timeline-organized {
-    grid-template-columns: 1fr;
-    gap: 20px;
-}
-
-.timeline-card {
-    padding: 25px;
-}
-
-.cases-organized {
-    grid-template-columns: 1fr;
-    gap: 20px;
-}
-
-.cert-organized {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
-}
-
-.sectors-organized {
-    grid-template-columns: 1fr;
-    gap: 20px;
-}
-
-.contact-buttons-organized {
-    flex-direction: column;
-    align-items: center;
-}
-
-.contact-buttons-organized .btn-primary,
-.contact-buttons-organized .btn-secondary {
-    width: 100%;
-    max-width: 280px;
-}
-
-.team-navigation-organized {
-    flex-direction: column;
-    align-items: center;
-}
-
-.team-navigation-organized .btn-primary,
-.team-navigation-organized .btn-secondary {
-    width: 100%;
-    max-width: 280px;
-}
-}
-
-}
 
 /* ============================================
    TOGGLE SWITCH DE TEMA (MODO ESCURO/CLARO)
@@ -2509,76 +2535,102 @@ body.no-transition *::after {
 }
 
 
-/* Novos estilos para layout lado a lado da seção de contato */
+/* === LAYOUT CONTATO === */
 .contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
     align-items: stretch;
-    /* Faz as colunas terem a mesma altura */
+    width: 100%;
 }
 
-.contact-form-column {
-    display: flex;
-    flex-direction: column;
-}
-
+/* Colunas */
+.contact-form-column,
 .contact-info-column {
     display: flex;
     flex-direction: column;
 }
 
-.contact-form-container {
-    background-color: var(--color-white);
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    height: 100%;
-    /* Ocupa toda a altura disponível */
-    display: flex;
-    flex-direction: column;
-}
-
+/* Containers */
+.contact-form-container,
 .contact-info-container {
     background-color: var(--color-white);
     padding: 40px;
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    height: 100%;
-    /* Ocupa toda a altura disponível */
+    min-height: fit-content;
+    /* Ajusta altura conforme conteúdo */
     display: flex;
     flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-/* Ajustar o formulário para ocupar o espaço disponível */
-.contact-form {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
+/* Garante que textos longos não quebrem layout */
+.contact-info-container p,
+.contact-info-container li {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
 }
 
-.contact-form .btn-primary {
-    margin-top: auto;
-    /* Empurra o botão para o final */
+/* Ajuste da lista de serviços no mobile */
+.services-list-contact ul {
+    padding-left: 18px;
+    margin-top: 10px;
+    line-height: 1.5;
 }
 
-/* Ajustes para responsividade */
+.services-list-contact li {
+    margin-bottom: 10px;
+}
+
+/* === MOBILE === */
 @media (max-width: 768px) {
     .contact-content {
-        grid-template-columns: 1fr !important;
-        gap: 30px;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 25px !important;
+        width: 100% !important;
     }
 
     .contact-form-container,
     .contact-info-container {
-        padding: 30px;
+        width: 100% !important;
+        max-width: 95% !important;
+        padding: 25px !important;
+        box-sizing: border-box !important;
+        min-height: auto !important;
+        /* Evita corte */
+    }
+
+    .services-list-contact li {
+        font-size: 14px !important;
+        line-height: 1.4 !important;
     }
 }
 
+/* === TELAS MENORES (CELULARES) === */
 @media (max-width: 480px) {
 
     .contact-form-container,
     .contact-info-container {
-        padding: 20px;
+        padding: 20px !important;
+        border-radius: 12px !important;
+    }
+
+    .contact-form-container h3,
+    .contact-info-container h3 {
+        font-size: 20px !important;
+    }
+
+    .services-list-contact li {
+        font-size: 13px !important;
+        margin-bottom: 8px !important;
     }
 }
+
 
 /* Ajustes para modo escuro */
 body.dark-mode .contact-form-column .contact-form-container,
