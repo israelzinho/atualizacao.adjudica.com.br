@@ -1727,45 +1727,132 @@ footer .btn-secondary:hover {
 }
 
 
-/* === FOOTER RESPONSIVO CORRIGIDO === */
-.footer-grid {
-    display: grid;
-    gap: 40px;
+/* === AJUSTE DE ALINHAMENTO ENTRE OS CARDS DE CONTATO === */
+.contact-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    /* Faz os dois cards terem a mesma altura */
+    gap: 30px;
 }
 
-/* Mobile (padrão): 1 coluna */
-@media (max-width: 767px) {
-    .footer-grid {
-        grid-template-columns: 1fr;
+.contact-form-column,
+.contact-info-column {
+    flex: 1 1 500px;
+    /* Mesma largura base para ambos */
+    max-width: 600px;
+    display: flex;
+}
+
+.contact-form-container,
+.contact-info-container {
+    width: 100%;
+    border-radius: 12px;
+    background-color: #2e3c4a;
+    /* ou use sua var(--color-white) / var(--color-secondary-blue) */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* === MOBILE === */
+@media (max-width: 768px) {
+    .contact-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .contact-form-column,
+    .contact-info-column {
+        max-width: 95%;
+    }
+
+    .contact-form-container,
+    .contact-info-container {
+        padding: 25px;
     }
 }
 
-/* Tablet: 2 colunas */
-@media (min-width: 768px) and (max-width: 1023px) {
-    .footer-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 50px;
-    }
+
+
+/* === CORRIGE TEXTO VAZANDO NOS INFO-CARDS === */
+.info-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    /* evita que o texto estoure */
+    word-break: break-word;
+    /* força quebra se necessário */
 }
 
-/* Desktop: 4 colunas equilibradas */
-@media (min-width: 1024px) {
-    .footer-grid {
-        grid-template-columns: repeat(4, minmax(220px, 1fr));
-        gap: 60px;
-        max-width: 1200px;
-        margin: 0 auto;
-        align-items: flex-start;
-    }
-
-    footer .container {
-        max-width: 1300px;
-        margin: 0 auto;
-        padding: 0 40px;
-        box-sizing: border-box;
-    }
+.info-card div {
+    flex: 1;
+    min-width: 0;
+    /* ESSENCIAL: evita estouro dentro do flex */
 }
 
+.info-card p {
+    white-space: normal !important;
+    /* força o texto a quebrar normalmente */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Garante que os ícones fiquem fixos e centralizados */
+.info-icon-wrapper {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* === AJUSTE DEFINITIVO DOS ÍCONES (FORÇA TOTAL) === */
+.info-icon-wrapper {
+    flex-shrink: 0 !important;
+    flex-grow: 0 !important;
+    width: 40px !important;
+    /* largura fixa */
+    height: 40px !important;
+    /* altura fixa */
+    min-width: 40px !important;
+    min-height: 40px !important;
+    max-width: 40px !important;
+    max-height: 40px !important;
+    border-radius: 50% !important;
+    background-color: var(--color-white) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    margin-right: 12px !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
+    overflow: hidden !important;
+}
+
+.info-icon-wrapper i {
+    font-size: 16px !important;
+    /* tamanho interno */
+    color: var(--color-primary-blue) !important;
+    width: auto !important;
+    height: auto !important;
+    line-height: 1 !important;
+}
 
 /* /========================================================================================================================================================*/
 
