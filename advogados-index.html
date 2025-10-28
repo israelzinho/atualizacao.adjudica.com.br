@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advogados Consultores - Adjudica Licitações</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-navy-dark: #0A1128;
+            --color-navy-light: #1F3A60;
+            --color-gold: #D4AF37;
+            --color-white: #FFFFFF;
+            --color-blue-suave: #2C3E50;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--color-white);
+            background-color: var(--color-navy-light);
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background-color: var(--color-navy-dark);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: var(--color-white);
+        }
+
+        .navbar .logo-img {
+            height: 50px;
+            width: auto;
+        }
+
+        .navbar .logo-text h1 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--color-white);
+            margin: 0;
+        }
+
+        .navbar .logo-text p {
+            font-size: 12px;
+            color: var(--color-gold);
+            margin: 0;
+        }
+
+        .navbar .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--color-white);
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .navbar .nav-links a {
+            text-decoration: none;
+            color: var(--color-white);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .navbar .nav-links a:hover {
+            color: var(--color-gold);
+        }
+
+        .navbar .dropdown {
+            position: relative;
+        }
+
+        .navbar .dropbtn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .navbar .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--color-navy-dark);
+            min-width: 250px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            padding: 12px 0;
+            z-index: 1001;
+            border-radius: 4px;
+            top: 100%;
+            left: 0;
+            border: 1px solid var(--color-navy-light);
+        }
+
+        .navbar .dropdown-content a {
+            color: var(--color-white);
+            padding: 12px 20px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar .dropdown-content a:hover {
+            background-color: var(--color-navy-light);
+            color: var(--color-gold);
+        }
+
+        .navbar .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .navbar .btn-primary {
+            background-color: var(--color-gold);
+            color: var(--color-navy-dark);
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar .btn-primary:hover {
+            background-color: #c9a227;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        main {
+            min-height: calc(100vh - 80px);
+            background-color: var(--color-navy-light);
+        }
+
+        /* ===== ADVOGADOS SECTION ===== */
+        .advogados-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .advogados-section h2 {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: var(--color-white);
+            font-weight: 700;
+        }
+
+        .advogados-section .subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: var(--color-gold);
+            margin-bottom: 60px;
+        }
+
+        .advogados-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            justify-items: center;
+        }
+
+        .advogado-card {
+            background-color: var(--color-blue-suave);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            max-width: 350px;
+            width: 100%;
+        }
+
+        .advogado-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 32px rgba(212, 175, 55, 0.2);
+        }
+
+        .advogado-card-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .advogado-card-content {
+            padding: 30px 25px;
+            text-align: center;
+        }
+
+        .advogado-card-content h3 {
+            font-size: 24px;
+            color: var(--color-gold);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .advogado-card-content p {
+            font-size: 16px;
+            color: var(--color-white);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .advogado-card-content .btn-contact {
+            background-color: var(--color-gold);
+            color: var(--color-navy-dark);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .advogado-card-content .btn-contact:hover {
+            background-color: #c9a227;
+            transform: translateY(-2px);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--color-navy-dark);
+            color: var(--color-white);
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 2px solid var(--color-gold);
+        }
+
+        footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        footer p {
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: var(--color-gold);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--color-white);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .navbar .container {
+                height: 70px;
+            }
+
+            .navbar .menu-toggle {
+                display: block;
+            }
+
+            .navbar .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background-color: var(--color-navy-dark);
+                gap: 0;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            }
+
+            .navbar .nav-links.active {
+                display: flex;
+            }
+
+            .navbar .nav-links li {
+                width: 100%;
+                border-bottom: 1px solid var(--color-navy-light);
+            }
+
+            .navbar .nav-links a {
+                display: block;
+                padding: 15px 20px;
+            }
+
+            .navbar .dropdown-content {
+                position: static;
+                display: none;
+                box-shadow: none;
+                background-color: var(--color-navy-light);
+                border: none;
+            }
+
+            .navbar .dropdown.active .dropdown-content {
+                display: block;
+            }
+
+            .advogados-section {
+                padding: 60px 20px;
+            }
+
+            .advogados-section h2 {
+                font-size: 32px;
+            }
+
+            .advogados-section .subtitle {
+                font-size: 16px;
+                margin-bottom: 40px;
+            }
+
+            .advogados-container {
+                gap: 30px;
+            }
+
+            .advogado-card {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar .logo-text h1 {
+                font-size: 16px;
+            }
+
+            .navbar .logo-text p {
+                font-size: 10px;
+            }
+
+            .navbar .logo-img {
+                height: 40px;
+            }
+
+            .advogados-section h2 {
+                font-size: 24px;
+            }
+
+            .advogados-section .subtitle {
+                font-size: 14px;
+            }
+
+            .advogado-card-content h3 {
+                font-size: 20px;
+            }
+
+            .advogado-card-content p {
+                font-size: 14px;
+            }
+
+            .advogado-card-image {
+                height: 280px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="#home" class="logo">
+                    <img src="LOGO-ADJUDICA-ATT.PNG" alt="Adjudica Licitações" class="logo-img">
+                    <div class="logo-text">
+                        <h1>Adjudica Licitações</h1>
+                        <p>Consultoria em Licitações Públicas</p>
+                    </div>
+                </a>
+
+                <!-- Botão hamburguer -->
+                <button class="menu-toggle" aria-label="Abrir menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <!-- Itens de navegação -->
+                <ul class="nav-links">
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#about">Sobre Nós</a></li>
+                    <li class="dropdown">
+                        <a href="#lawyers" class="dropbtn">Corpo Empresarial <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="gleicielly.html">Gleicielly Vieira dos Santos Silva Souza</a>
+                            <a href="deisiane.html">Deisiane Ribeiro S. Elias</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                    <li><a href="advogados-index.html">Advogados Consultores</a></li>
+                    <div class="dropdown-content">
+                        <a href="Gabriel-index.html">Gabriel</a>
+                        <a href="Felipe-index.html">Felipe</a>
+                    </div>
+                    </li>
+
+                    <li><a href="#contact" class="btn-primary">Solicitar Consulta</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Advogados Section -->
+        <section class="advogados-section" id="advogados">
+            <h2>Advogados Consultores</h2>
+            <p class="subtitle">Especialistas em Consultoria Jurídica</p>
+
+            <div class="advogados-container">
+                <!-- Card 1 -->
+                <div class="advogado-card">
+                    <img src="advogado_card_1.png" alt="Dr. Ricardo Mendes" class="advogado-card-image">
+                    <div class="advogado-card-content">
+                        <h3>Dr. Ricardo Mendes</h3>
+                        <p>Especialista em Direito Administrativo e Licitações Públicas</p>
+                        <button class="btn-contact">Consultar</button>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="advogado-card">
+                    <img src="advogado_card_2.png" alt="Dr. Fernando Costa" class="advogado-card-image">
+                    <div class="advogado-card-content">
+                        <h3>Dr. Fernando Costa</h3>
+                        <p>Especialista em Direito Contratual e Negociações Comerciais</p>
+                        <button class="btn-contact">Consultar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Adjudica Licitações. Todos os direitos reservados.</p>
+            <p>Consultoria em Licitações Públicas | <a href="mailto:contato@adjudica.com.br">contato@adjudica.com.br</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Menu toggle para mobile
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Fechar menu ao clicar em um link
+        const navItems = document.querySelectorAll('.nav-links a');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Dropdown toggle para mobile
+        const dropdowns = document.querySelectorAll('.dropdown');
+        dropdowns.forEach(dropdown => {
+            const dropbtn = dropdown.querySelector('.dropbtn');
+            dropbtn.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
