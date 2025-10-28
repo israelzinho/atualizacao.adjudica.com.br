@@ -2,47 +2,66 @@
 document.addEventListener('DOMContentLoaded', function () {
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-    const dropdown = document.querySelector('.dropdown');
+    const dropdowns = document.querySelectorAll('.dropdown');
+    const body = document.body;
 
-    // Toggle do menu mobile
+    /* ===========================
+       MENU MOBILE (abrir/fechar)
+    ============================ */
     if (menuToggle) {
         menuToggle.addEventListener('click', function () {
             navLinks.classList.toggle('active');
         });
     }
 
-    // Toggle do dropdown em mobile
-    if (dropdown) {
+    /* ===========================
+       DROPDOWNS (mobile e desktop)
+    ============================ */
+    dropdowns.forEach(dropdown => {
         const dropbtn = dropdown.querySelector('.dropbtn');
+
         if (dropbtn) {
             dropbtn.addEventListener('click', function (e) {
-                if (window.innerWidth <= 767) {
+                // Só aplica no mobile
+                if (window.innerWidth <= 768) {
                     e.preventDefault();
+
+                    // Fecha outros dropdowns abertos
+                    dropdowns.forEach(d => {
+                        if (d !== dropdown) d.classList.remove('active');
+                    });
+
+                    // Abre/fecha o atual
                     dropdown.classList.toggle('active');
                 }
             });
         }
-    }
+    });
 
-    // Fechar menu ao clicar em um link
+    /* ===========================
+       FECHAR MENU AO CLICAR EM UM LINK
+    ============================ */
     const menuLinks = document.querySelectorAll('.nav-links a');
     menuLinks.forEach(link => {
         link.addEventListener('click', function () {
-            if (window.innerWidth <= 767) {
+            if (window.innerWidth <= 768) {
                 navLinks.classList.remove('active');
+                dropdowns.forEach(d => d.classList.remove('active'));
             }
         });
     });
 
-    // Smooth scroll para links internos
+    /* ===========================
+       SMOOTH SCROLL (rolagem suave)
+    ============================ */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
             if (href !== '#' && href !== '#!') {
-                e.preventDefault();
                 const target = document.querySelector(href);
                 if (target) {
-                    const offsetTop = target.offsetTop - 70; // Ajuste para navbar fixa
+                    e.preventDefault();
+                    const offsetTop = target.offsetTop - 70;
                     window.scrollTo({
                         top: offsetTop,
                         behavior: 'smooth'
@@ -52,21 +71,21 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Formulário de contato (se existir)
+    /* ===========================
+       FORMULÁRIO DE CONTATO
+    ============================ */
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
-
-            // Aqui você pode adicionar a lógica de envio do formulário
-            // Por exemplo, usando fetch para enviar para um servidor
-
             alert('Obrigado pelo contato! Retornaremos em breve.');
             contactForm.reset();
         });
     }
 
-    // Adicionar classe active na navbar ao fazer scroll
+    /* ===========================
+       SOMBRA NA NAVBAR AO ROLAR
+    ============================ */
     window.addEventListener('scroll', function () {
         const navbar = document.querySelector('.navbar');
         if (window.scrollY > 50) {
@@ -76,21 +95,18 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Toggle de Modo Escuro/Claro (Toggle Switch)
+    /* ===========================
+       TOGGLE MODO ESCURO/CLARO
+    ============================ */
     const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
-
     if (themeToggle) {
-        // Verificar se há preferência salva no localStorage
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
             body.classList.add('dark-mode');
             themeToggle.checked = true;
         }
 
-        // Toggle ao mudar o checkbox
         themeToggle.addEventListener('change', function () {
-            // Alternar modo baseado no estado do checkbox
             if (themeToggle.checked) {
                 body.classList.add('dark-mode');
                 localStorage.setItem('theme', 'dark');
@@ -102,4 +118,5 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-  // att
+
+console.log("✅ script.js carregado com sucesso!");
