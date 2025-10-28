@@ -157,93 +157,94 @@ ul {
 }
 
 
-/* Navbar */
+/* === AJUSTE VISUAL COMPLETO DA NAVBAR === */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: var(--color-white);
+    background-color: var(--color-primary-blue);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    padding: 10px 0;
+    padding: 12px 0;
 }
 
 .navbar .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 40px;
+    max-width: 1300px;
+    margin: 0 auto;
+    overflow: visible;
+    /* <-- ESSENCIAL pro dropdown aparecer */
 }
 
+/* Logo */
 .navbar .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 .navbar .logo-img {
-    height: 50px;
+    height: 48px;
     width: auto;
 }
 
-.navbar .logo .logo-text h1 {
-    font-size: 22px;
+.navbar .logo-text h1 {
+    font-size: 20px;
     font-weight: 700;
-    color: var(--color-light-gray);
+    color: var(--color-white);
 }
 
 .navbar .logo-text p {
     font-size: 12px;
-    color: var(--color-text-light);
+    color: rgba(255, 255, 255, 0.7);
 }
 
-    {
+/* Links */
+.navbar .nav-links {
     display: flex;
     align-items: center;
-    gap: 25px;
-    .navbar .nav-links
+    gap: 18px;
+    /* antes era 25px */
+    list-style: none;
+}
+
+.navbar .nav-links li:last-child {
+    margin-left: 10px;
+    /* afasta levemente o botão dourado */
 }
 
 .navbar .nav-links li a {
-    color: var(--color-text-dark);
+    color: var(--color-white);
     font-weight: 500;
-    padding: 5px 0;
-    position: relative;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .navbar .nav-links li a:hover {
+    color: var(--color-accent-gold);
+}
+
+/* Botão principal */
+.navbar .btn-primary {
+    background: linear-gradient(90deg, #f2c94c, #d4a017);
     color: var(--color-primary-blue);
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-.navbar .nav-links li a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--color-primary-blue);
-    transition: width 0.3s ease;
+.navbar .btn-primary:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(90deg, #ffd65b, #e0b229);
 }
 
-.navbar .nav-links li a:hover::after {
-    width: 100%;
-}
-
-.navbar .nav-links li .btn-primary {
-    margin-left: 15px;
-}
-
-.navbar .menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: var(--color-primary-blue);
-}
-
-/* Dropdown Advogados */
+/* === DROPDOWN MENU === */
 .dropdown {
     position: relative;
 }
@@ -253,20 +254,29 @@ ul {
     align-items: center;
     gap: 5px;
     cursor: pointer;
+    color: var(--color-white);
+    font-weight: 500;
+    text-decoration: none;
 }
 
+.dropdown .dropbtn i {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+/* Conteúdo do dropdown */
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: var(--color-white);
+    background-color: #fff;
     min-width: 220px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    border-radius: 5px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
     overflow: hidden;
     top: 100%;
     left: 0;
-    margin-top: 10px;
+    margin-top: 8px;
+    z-index: 9999;
 }
 
 .dropdown-content a {
@@ -274,8 +284,7 @@ ul {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-    text-align: left;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .dropdown-content a:hover {
@@ -283,9 +292,80 @@ ul {
     color: var(--color-primary-blue);
 }
 
+/* Exibe menu no hover (desktop) */
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+/* Gira o ícone */
+.dropdown:hover .dropbtn i {
+    transform: rotate(180deg);
+}
+
+/* === RESPONSIVIDADE === */
+@media (max-width: 768px) {
+    .navbar .container {
+        padding: 10px 20px;
+    }
+
+    .navbar .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        background-color: var(--color-white);
+        position: absolute;
+        top: 70px;
+        left: 0;
+        padding: 20px 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .navbar .nav-links.active {
+        display: flex;
+    }
+
+    .navbar .nav-links li a {
+        color: var(--color-primary-blue);
+        font-size: 18px;
+        padding: 10px 0;
+    }
+
+    .navbar .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        color: var(--color-white);
+        font-size: 26px;
+        cursor: pointer;
+    }
+
+    /* Dropdown no mobile */
+    .dropdown-content {
+        position: static;
+        background-color: transparent;
+        box-shadow: none;
+        margin-top: 0;
+        padding-left: 15px;
+    }
+
+    .dropdown.active .dropdown-content {
+        display: block;
+    }
+
+    .dropdown-content a {
+        background-color: var(--color-white);
+        margin: 5px 0;
+        border-radius: 6px;
+    }
+
+    .dropdown .dropbtn {
+        justify-content: space-between;
+        width: 100%;
+        color: var(--color-primary-blue);
+    }
+}
+
 
 /* Seções Gerais */
 .section-padding {
@@ -1000,6 +1080,7 @@ ul {
     align-items: center;
     justify-content: center;
     gap: 15px;
+    color: var(--color-light-gray);
 }
 
 .organized-section.bg-dark h3 {
@@ -1259,7 +1340,7 @@ ul {
 /* Seção "Conheça Nossa Equipe" organizada */
 .team-section-organized {
     padding: 60px 0;
-    background-color: var(--color-light-gray);
+    background-color: var(--color-primary-blue);
     text-align: center;
 }
 
@@ -1293,18 +1374,22 @@ ul {
     transition: all 0.3s ease;
 }
 
-/* Contact Section */
+/* Layout lado a lado com alturas iguais */
 .contact-content {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 50px;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: stretch;
+    /* Faz ambos os cards terem a mesma altura */
 }
 
-.contact-form-container {
-    background-color: var(--color-white);
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+/* Faz os dois cards crescerem igualmente */
+.contact-form-container,
+.contact-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
 }
 
 .form-title,
@@ -2196,9 +2281,16 @@ footer .btn-secondary:hover {
     }
 
     .organized-section h3 {
-        font-size: 26px;
-        flex-direction: column;
-        gap: 10px;
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 40px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        color: var(--color-light-gray);
+        /* ← adiciona esta linha */
     }
 
     .timeline-organized {
