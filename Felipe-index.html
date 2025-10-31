@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Felipe Soares de Souza - Advogado Consultor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="apple-touch-icon" href="./LOGO-ADJUDICA-ATT.png?v=2">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-tertiary-blue: #1F3A60;
+            --color-navy-dark: #0A1128;
+            --color-navy-light: #1F3A60;
+            --color-gold: #D4AF37;
+            --color-white: #FFFFFF;
+            --color-blue-suave: #2C3E50;
+        }
+
+        /* Garantir a fonte original que você tinha (Segoe UI) */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--color-blue-suave);
+            /* mantido apenas como valor padrão fallback */
+            background-color: var(--color-white);
+            /* esse valor pode ser sobrescrito pela seção específica */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* --- Correção: evitar que regras de seção sobrescrevam a família da fonte --- */
+        /* Garante que elementos não troquem para outra fonte por herança acidental */
+        body,
+        header,
+        nav,
+        main,
+        footer,
+        .profile-section,
+        .profile-container {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+        }
+
+
+        /* Classe de destaque */
+        .highlight-gold {
+            color: var(--color-gold);
+            font-weight: 600;
+        }
+
+        /* === NAVBAR PRINCIPAL === */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--color-navy-dark) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 10px 0;
+            /* 🔹 Navbar mais fina */
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            max-width: 1300px;
+            margin: 0 auto;
+            overflow: visible;
+        }
+
+        /* === LOGO === */
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-left: 60px;
+            /* 🔹 Move o logo um pouco mais para a direita */
+        }
+
+        .navbar .logo-img {
+            height: 48px;
+            width: auto;
+        }
+
+        .navbar .logo-text h1 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--color-white);
+        }
+
+        .navbar .logo-text p {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .navbar .logo a {
+            text-decoration: none;
+            color: inherit;
+            /* mantém as cores do h1 e p sem interferência */
+        }
+
+        /* === LINKS DE NAVEGAÇÃO === */
+        .navbar .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            list-style: none;
+        }
+
+        .navbar .nav-links li:last-child {
+            margin-left: 30px;
+        }
+
+        /* === LINKS === */
+        .navbar .nav-links li a {
+            color: var(--color-white);
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .navbar .nav-links li a:hover {
+            color: var(--color-accent-gold);
+        }
+
+        /* ===== BOTÃO PADRÃO ===== */
+        .btn-primary {
+            background: linear-gradient(90deg, #f2c94c, #d4a017);
+            color: var(--color-navy-dark);
+            padding: 8px 22px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(90deg, #ffd65b, #e0b229);
+            transform: translateY(-2px);
+            color: var(--color-navy-dark);
+        }
+
+        .navbar .btn-primary:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(90deg, #ffd65b, #e0b229);
+        }
+
+        /* === ESCONDE O MENU HAMBÚRGUER NO DESKTOP === */
+        .navbar .menu-toggle {
+            display: none !important;
+        }
+
+        /* === DROPDOWN === */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            z-index: 9999;
+            overflow: hidden;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown-content a {
+            color: var(--color-primary-blue);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--color-light-gray);
+            color: var(--color-accent-gold);
+        }
+
+        /* Exibe o dropdown no hover (desktop) */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* === RESPONSIVIDADE (MOBILE) === */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 10px 0;
+            }
+
+            .navbar .menu-toggle {
+                display: block;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 26px;
+                cursor: pointer;
+            }
+
+            .navbar .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: var(--color-primary-blue);
+                position: absolute;
+                top: 70px;
+                left: 0;
+                text-align: center;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+            }
+
+            .navbar .nav-links.active {
+                display: flex;
+            }
+
+            .navbar .nav-links li a {
+                color: white;
+                font-size: 18px;
+                padding: 10px 0;
+            }
+
+            /* === DROPDOWN MOBILE === */
+            .dropdown {
+                position: relative;
+            }
+
+            .dropdown .dropbtn {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                cursor: pointer;
+            }
+
+            .dropdown .dropbtn i {
+                font-size: 12px;
+                transition: transform 0.3s ease;
+            }
+
+            .dropdown:hover .dropbtn i {
+                transform: rotate(180deg);
+            }
+
+            .dropdown-content {
+                position: static;
+                background-color: transparent;
+                box-shadow: none;
+                display: none;
+                margin-top: 0;
+                padding-left: 0;
+                width: 100%;
+            }
+
+            .dropdown.active .dropdown-content {
+                display: block;
+            }
+
+            .dropdown-content a {
+                background-color: var(--color-primary-blue);
+                color: var(--color-white);
+                font-size: 16px;
+                padding: 10px 15px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .dropdown-content a:hover {
+                background-color: var(--color-accent-gold);
+                color: var(--color-primary-blue);
+            }
+
+            .navbar .logo-text {
+                display: none;
+            }
+        }
+
+
+
+        /* ===== MAIN CONTENT - PROFILE PAGE ===== */
+        .profile-section {
+            background-color: #0F1419;
+            /* 🔹 Fundo geral escuro */
+            padding: 80px 20px;
+            color: var(--color-white);
+        }
+
+        .profile-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            background-color: #192D4F;
+            /* 🔹 Card azul */
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--color-gold);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            flex-shrink: 0;
+        }
+
+        /* Nome do advogado */
+        .profile-info h1 {
+            font-size: 36px;
+            color: var(--color-gold);
+            /* 🔹 Dourado */
+            margin-bottom: 5px;
+        }
+
+        /* Texto de especialidades */
+        .profile-info .specialties {
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        /* "Advogado" em branco */
+        .text-white {
+            color: #FFFFFF;
+        }
+
+        /* Botão de contato mantido */
+        .profile-info .btn-contact {
+            background-color: var(--color-gold);
+            color: var(--color-navy-dark);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .profile-info .btn-contact:hover {
+            background-color: #c9a227;
+            transform: translateY(-2px);
+        }
+
+        /* Título da biografia */
+        .profile-content h2 {
+            font-size: 24px;
+            color: var(--color-gold);
+            /* 🔹 Dourado */
+            margin-bottom: 15px;
+            border-left: 4px solid var(--color-gold);
+            padding-left: 15px;
+        }
+
+        /* Texto da biografia */
+        .profile-content p {
+            font-size: 16px;
+            color: var(--color-white);
+            /* 🔹 Branco */
+            margin-bottom: 20px;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        /* ===== FOOTER (versão ajustada) ===== */
+        footer {
+            background-color: var(--color-navy-dark);
+            color: var(--color-white);
+            padding: 12px 20px;
+            /* 🔹 Reduzido de 40px para 12px */
+            text-align: center;
+            border-top: 2px solid var(--color-gold);
+        }
+
+        footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        footer p {
+            margin: 4px 0;
+            /* 🔹 Menor espaçamento entre as linhas */
+            font-size: 13px;
+            /* 🔹 Texto um pouco mais discreto */
+        }
+
+        footer a {
+            color: var(--color-gold);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--color-white);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .navbar .menu-toggle {
+                display: block;
+            }
+
+            .navbar .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background-color: var(--color-navy-dark);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            }
+
+            .navbar .nav-links.active {
+                display: flex;
+            }
+
+            .navbar .nav-links li {
+                width: 100%;
+                border-bottom: 1px solid var(--color-navy-light);
+            }
+
+            .navbar .nav-links a {
+                padding: 15px 20px;
+            }
+
+            .navbar .dropdown-content {
+                position: static;
+                display: none;
+                box-shadow: none;
+                background-color: var(--color-navy-light);
+                border: none;
+            }
+
+            .navbar .dropdown.active .dropdown-content {
+                display: block;
+            }
+
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .profile-info h1 {
+                font-size: 30px;
+            }
+
+            .profile-info .specialties {
+                font-size: 16px;
+            }
+
+            .profile-info .btn-contact {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+
+            .profile-content h2 {
+                font-size: 20px;
+            }
+
+            .profile-content p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="#home" class="logo">
+                    <img src="LOGO-ADJUDICA-ATT.PNG" alt="Adjudica Licitações" class="logo-img">
+                    <div class="logo-text">
+                        <h1>Adjudica Licitações</h1>
+                        <p>Consultoria em Licitações Públicas</p>
+                    </div>
+                </a>
+
+                <!-- Botão hamburguer -->
+                <button class="menu-toggle" aria-label="Abrir menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <!-- Itens de navegação -->
+                <!-- Itens de navegação -->
+                <ul class="nav-links">
+                    <!-- Link principal -->
+                    <li><a href="index.html">Início</a></li>
+
+                    <!-- Sobre -->
+                    <li><a href="index.html#about">Sobre Nós</a></li>
+
+                    <!-- Corpo Empresarial -->
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">Corpo Empresarial <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="gleicielly.html">Gleicielly Vieira dos Santos Silva Souza</a>
+                            <a href="deisiane.html">Deisiane Ribeiro S. Elias</a>
+                        </div>
+                    </li>
+
+                    <!-- Advogados Consultores -->
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">Advogados Consultores <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="Gabriel-index.html">Gabriel</a>
+                            <a href="Felipe-index.html">Felipe</a>
+                        </div>
+                    </li>
+
+                    <!-- Botão de ação -->
+                    <li><a href="#contact" class="btn-primary">Solicitar Consulta</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="profile-section">
+            <div class="profile-container">
+                <div class="profile-header">
+                    <img src="advogado_card_1.png" alt="Felipe Soares de Souza" class="profile-image">
+                    <div class="profile-info">
+                        <h1>Felipe Soares de Souza</h1>
+                        <p class="specialties">
+                            <span class="text-white">Advogado</span> |
+                            <span class="highlight-gold">Especialista em Direito Civil e Gestão em Saúde</span> |
+                            <span class="highlight-gold">Consultor em Licitações e Contratos Administrativos</span>
+                        </p>
+
+                        <a href="https://web.whatsapp.com/send?phone=5562983399400&text=Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20suas%20consultorias%20em%20licita%C3%A7%C3%B5es"
+                            class="btn-primary" target="_blank" rel="noopener noreferrer">
+                            Solicitar Consulta
+                        </a>
+                    </div>
+                </div>
+
+                <div class="profile-content">
+                    <h2>Biografia e Experiência</h2>
+                    <p>Pós-graduado em Direito Civil e em Gestão em Saúde. <span class="highlight-gold">Especialista em
+                            Licitações e Contratos Administrativos</span>, possui <span class="highlight-gold">mais de
+                            20 certificações na área</span> e uma sólida trajetória de atuação direta com processos
+                        licitatórios, gestão contratual e modelagem de parcerias público-privadas (PPP) e chamamentos
+                        públicos no setor público.</p>
+
+                    <p>Como servidor efetivo do Estado de Goiás, desenvolveu sua carreira na Secretaria de Estado da
+                        Saúde, onde atuou na Procuradoria Setorial como Coordenador de Contencioso Administrativo (PAD
+                        II), conduzindo processos administrativos. Também exerceu a função de Assessor Técnico
+                        Especializado, sendo responsável por análises jurídicas de editais, contratos administrativos,
+                        chamamentos públicos e suporte jurídico às unidades gestoras.</p>
+
+                    <p>Sua experiência prática no planejamento e execução de processos licitatórios, gestão de contratos
+                        administrativos e condução de parcerias público-privadas o torna um profissional altamente
+                        capacitado para orientar empresas na participação em licitações e na atuação estratégica junto à
+                        Administração Pública.</p>
+
+                    <p>Atualmente, ocupa o cargo de <span class="highlight-gold">Assessor Especial de Prioridades
+                            Estratégicas</span> no Gabinete do Secretário de Estado da Saúde, participando da
+                        estruturação e acompanhamento de projetos estratégicos e de inovação na gestão pública, além de
+                        integrar o Núcleo Estadual de Gestão Estratégica da Segurança do Paciente (NEGESP/GO).</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Adjudica Licitações. Todos os direitos reservados.</p>
+            <p>Consultoria em Licitações Públicas | <a href="mailto:contato@adjudica.com.br">contato@adjudica.com.br</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Menu toggle para mobile
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Fechar menu ao clicar em um link
+        const navItems = document.querySelectorAll('.nav-links a');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+        // Dropdown toggle para mobile
+        const dropdowns = document.querySelectorAll('.dropdown');
+        dropdowns.forEach(dropdown => {
+            const dropbtn = dropdown.querySelector('.dropbtn');
+            dropbtn.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
