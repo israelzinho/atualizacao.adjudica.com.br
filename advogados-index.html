@@ -7,6 +7,10 @@
     <title>Advogados Consultores - Adjudica Licitações</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="apple-touch-icon" href="./LOGO-ADJUDICA-ATT.png?v=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="LOGO-ADJUDICA-ATT.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="LOGO-ADJUDICA-ATT.png">
+    <link rel="apple-touch-icon" href="LOGO-ADJUDICA-ATT.png">
+    <meta name="theme-color" content="#0A1128">
     <style>
         * {
             margin: 0;
@@ -15,11 +19,16 @@
         }
 
         :root {
-            --color-tertiary-blue: #1F3A60 --color-navy-dark: #0A1128;
+            --color-navy-dark: #0A1128;
+            /* cor da navbar */
             --color-navy-light: #1F3A60;
+            /* cor alternativa */
             --color-gold: #D4AF37;
             --color-white: #FFFFFF;
             --color-blue-suave: #2C3E50;
+            --color-accent-gold: #FFD65B;
+            --color-primary-blue: #1F3A60;
+            --color-light-gray: #F5F5F5;
         }
 
         body {
@@ -77,6 +86,12 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
+        .navbar .logo a {
+            text-decoration: none;
+            color: inherit;
+            /* mantém as cores do h1 e p sem interferência */
+        }
+
         /* === LINKS DE NAVEGAÇÃO === */
         .navbar .nav-links {
             display: flex;
@@ -101,19 +116,23 @@
             color: var(--color-accent-gold);
         }
 
-        /* === BOTÃO PRINCIPAL === */
-        .navbar .btn-primary {
+        /* ===== BOTÃO PADRÃO ===== */
+        .btn-primary {
             background: linear-gradient(90deg, #f2c94c, #d4a017);
-            color: var(--color-primary-blue);
-            padding: 8px 25px;
-            /* 🔹 Mais fino */
-            border-radius: 8px;
-            /* 🔹 Bordas arredondadas */
-            font-size: 12px;
-            /* 🔹 Texto menor */
+            color: var(--color-navy-dark);
+            padding: 8px 22px;
+            border-radius: 6px;
+            font-size: 13px;
             font-weight: 600;
             text-decoration: none;
-            transition: transform 0.3s ease, background-color 0.3s ease;
+            display: inline-block;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(90deg, #ffd65b, #e0b229);
+            transform: translateY(-2px);
+            color: var(--color-navy-dark);
         }
 
         .navbar .btn-primary:hover {
