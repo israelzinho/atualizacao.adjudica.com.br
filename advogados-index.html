@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Advogados Consultores - Adjudica Licitações</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="apple-touch-icon" href="./LOGO-ADJUDICA-ATT.png?v=2">
     <style>
         * {
             margin: 0;
@@ -14,7 +15,7 @@
         }
 
         :root {
-            --color-navy-dark: #0A1128;
+            --color-tertiary-blue: #1F3A60 --color-navy-dark: #0A1128;
             --color-navy-light: #1F3A60;
             --color-gold: #D4AF37;
             --color-white: #FFFFFF;
@@ -28,132 +29,231 @@
             background-color: var(--color-navy-light);
         }
 
-        /* ===== NAVBAR ===== */
+        /* === NAVBAR PRINCIPAL === */
         .navbar {
-            background-color: var(--color-navy-dark);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--color-navy-dark) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             z-index: 1000;
+            padding: 10px 0;
+            /* 🔹 Navbar mais fina */
         }
 
         .navbar .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 80px;
+            padding: 0 40px;
+            max-width: 1300px;
+            margin: 0 auto;
+            overflow: visible;
         }
 
+        /* === LOGO === */
         .navbar .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
-            text-decoration: none;
-            color: var(--color-white);
+            gap: 12px;
+            margin-left: 60px;
+            /* 🔹 Move o logo um pouco mais para a direita */
         }
 
         .navbar .logo-img {
-            height: 50px;
+            height: 48px;
             width: auto;
         }
 
         .navbar .logo-text h1 {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 700;
             color: var(--color-white);
-            margin: 0;
         }
 
         .navbar .logo-text p {
             font-size: 12px;
-            color: var(--color-gold);
-            margin: 0;
+            color: rgba(255, 255, 255, 0.7);
         }
 
-        .navbar .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: var(--color-white);
-        }
-
+        /* === LINKS DE NAVEGAÇÃO === */
         .navbar .nav-links {
             display: flex;
-            list-style: none;
-            gap: 30px;
             align-items: center;
+            gap: 18px;
+            list-style: none;
         }
 
-        .navbar .nav-links a {
-            text-decoration: none;
+        .navbar .nav-links li:last-child {
+            margin-left: 30px;
+        }
+
+        /* === LINKS === */
+        .navbar .nav-links li a {
             color: var(--color-white);
-            font-size: 14px;
             font-weight: 500;
+            text-decoration: none;
             transition: color 0.3s ease;
         }
 
-        .navbar .nav-links a:hover {
-            color: var(--color-gold);
+        .navbar .nav-links li a:hover {
+            color: var(--color-accent-gold);
         }
 
-        .navbar .dropdown {
+        /* === BOTÃO PRINCIPAL === */
+        .navbar .btn-primary {
+            background: linear-gradient(90deg, #f2c94c, #d4a017);
+            color: var(--color-primary-blue);
+            padding: 8px 25px;
+            /* 🔹 Mais fino */
+            border-radius: 8px;
+            /* 🔹 Bordas arredondadas */
+            font-size: 12px;
+            /* 🔹 Texto menor */
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .navbar .btn-primary:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(90deg, #ffd65b, #e0b229);
+        }
+
+        /* === ESCONDE O MENU HAMBÚRGUER NO DESKTOP === */
+        .navbar .menu-toggle {
+            display: none !important;
+        }
+
+        /* === DROPDOWN === */
+        .dropdown {
             position: relative;
         }
 
-        .navbar .dropbtn {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .navbar .dropdown-content {
+        .dropdown-content {
             display: none;
             position: absolute;
-            background-color: var(--color-navy-dark);
-            min-width: 250px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-            padding: 12px 0;
-            z-index: 1001;
-            border-radius: 4px;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            z-index: 9999;
+            overflow: hidden;
             top: 100%;
             left: 0;
-            border: 1px solid var(--color-navy-light);
         }
 
-        .navbar .dropdown-content a {
-            color: var(--color-white);
-            padding: 12px 20px;
+        .dropdown-content a {
+            color: var(--color-primary-blue);
+            padding: 12px 16px;
             text-decoration: none;
             display: block;
             transition: background-color 0.3s ease;
         }
 
-        .navbar .dropdown-content a:hover {
-            background-color: var(--color-navy-light);
-            color: var(--color-gold);
+        .dropdown-content a:hover {
+            background-color: var(--color-light-gray);
+            color: var(--color-accent-gold);
         }
 
-        .navbar .dropdown:hover .dropdown-content {
+        /* Exibe o dropdown no hover (desktop) */
+        .dropdown:hover .dropdown-content {
             display: block;
         }
 
-        .navbar .btn-primary {
-            background-color: var(--color-gold);
-            color: var(--color-navy-dark);
-            padding: 10px 20px;
-            border-radius: 4px;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
+        /* === RESPONSIVIDADE (MOBILE) === */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 10px 0;
+            }
+
+            .navbar .menu-toggle {
+                display: block;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 26px;
+                cursor: pointer;
+            }
+
+            .navbar .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: var(--color-primary-blue);
+                position: absolute;
+                top: 70px;
+                left: 0;
+                text-align: center;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+            }
+
+            .navbar .nav-links.active {
+                display: flex;
+            }
+
+            .navbar .nav-links li a {
+                color: white;
+                font-size: 18px;
+                padding: 10px 0;
+            }
+
+            /* === DROPDOWN MOBILE === */
+            .dropdown {
+                position: relative;
+            }
+
+            .dropdown .dropbtn {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                cursor: pointer;
+            }
+
+            .dropdown .dropbtn i {
+                font-size: 12px;
+                transition: transform 0.3s ease;
+            }
+
+            .dropdown:hover .dropbtn i {
+                transform: rotate(180deg);
+            }
+
+            .dropdown-content {
+                position: static;
+                background-color: transparent;
+                box-shadow: none;
+                display: none;
+                margin-top: 0;
+                padding-left: 0;
+                width: 100%;
+            }
+
+            .dropdown.active .dropdown-content {
+                display: block;
+            }
+
+            .dropdown-content a {
+                background-color: var(--color-primary-blue);
+                color: var(--color-white);
+                font-size: 16px;
+                padding: 10px 15px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .dropdown-content a:hover {
+                background-color: var(--color-accent-gold);
+                color: var(--color-primary-blue);
+            }
+
+            .navbar .logo-text {
+                display: none;
+            }
         }
 
-        .navbar .btn-primary:hover {
-            background-color: #c9a227;
-        }
+
 
         /* ===== MAIN CONTENT ===== */
         main {
@@ -163,9 +263,13 @@
 
         /* ===== ADVOGADOS SECTION ===== */
         .advogados-section {
-            max-width: 1200px;
-            margin: 0 auto;
+            width: 100%;
+            /* ocupa toda a largura da tela */
             padding: 80px 20px;
+            background-color: #0F1D37;
+            /* cor do fundo */
+            color: #fff;
+            /* deixa o texto visível */
         }
 
         .advogados-section h2 {
@@ -192,7 +296,7 @@
 
         .advogado-card {
             background-color: var(--color-blue-suave);
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -250,11 +354,12 @@
             transform: translateY(-2px);
         }
 
-        /* ===== FOOTER ===== */
+        /* ===== FOOTER (versão ajustada) ===== */
         footer {
             background-color: var(--color-navy-dark);
             color: var(--color-white);
-            padding: 40px 20px;
+            padding: 12px 20px;
+            /* 🔹 Reduzido de 40px para 12px */
             text-align: center;
             border-top: 2px solid var(--color-gold);
         }
@@ -265,8 +370,10 @@
         }
 
         footer p {
-            margin: 10px 0;
-            font-size: 14px;
+            margin: 4px 0;
+            /* 🔹 Menor espaçamento entre as linhas */
+            font-size: 13px;
+            /* 🔹 Texto um pouco mais discreto */
         }
 
         footer a {
@@ -279,108 +386,26 @@
             color: var(--color-white);
         }
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            .navbar .container {
-                height: 70px;
-            }
 
-            .navbar .menu-toggle {
-                display: block;
-            }
-
-            .navbar .nav-links {
-                display: none;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                right: 0;
-                flex-direction: column;
-                background-color: var(--color-navy-dark);
-                gap: 0;
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-            }
-
-            .navbar .nav-links.active {
-                display: flex;
-            }
-
-            .navbar .nav-links li {
-                width: 100%;
-                border-bottom: 1px solid var(--color-navy-light);
-            }
-
-            .navbar .nav-links a {
-                display: block;
-                padding: 15px 20px;
-            }
-
-            .navbar .dropdown-content {
-                position: static;
-                display: none;
-                box-shadow: none;
-                background-color: var(--color-navy-light);
-                border: none;
-            }
-
-            .navbar .dropdown.active .dropdown-content {
-                display: block;
-            }
-
-            .advogados-section {
-                padding: 60px 20px;
-            }
-
-            .advogados-section h2 {
-                font-size: 32px;
-            }
-
-            .advogados-section .subtitle {
-                font-size: 16px;
-                margin-bottom: 40px;
-            }
-
-            .advogados-container {
-                gap: 30px;
-            }
-
-            .advogado-card {
-                max-width: 100%;
-            }
+        .advogados-section h2 {
+            font-size: 24px;
         }
 
-        @media (max-width: 480px) {
-            .navbar .logo-text h1 {
-                font-size: 16px;
-            }
+        .advogados-section .subtitle {
+            font-size: 14px;
+        }
 
-            .navbar .logo-text p {
-                font-size: 10px;
-            }
+        .advogado-card-content h3 {
+            font-size: 20px;
+        }
 
-            .navbar .logo-img {
-                height: 40px;
-            }
+        .advogado-card-content p {
+            font-size: 14px;
+        }
 
-            .advogados-section h2 {
-                font-size: 24px;
-            }
-
-            .advogados-section .subtitle {
-                font-size: 14px;
-            }
-
-            .advogado-card-content h3 {
-                font-size: 20px;
-            }
-
-            .advogado-card-content p {
-                font-size: 14px;
-            }
-
-            .advogado-card-image {
-                height: 280px;
-            }
+        .advogado-card-image {
+            height: 280px;
+        }
         }
     </style>
 </head>
@@ -403,25 +428,28 @@
                 </button>
 
                 <!-- Itens de navegação -->
+                <!-- Itens de navegação -->
                 <ul class="nav-links">
-                    <li><a href="#home">Início</a></li>
-                    <li><a href="#about">Sobre Nós</a></li>
-                    <li class="dropdown">
-                        <a href="#lawyers" class="dropbtn">Corpo Empresarial <i class="fas fa-chevron-down"></i></a>
-                        <div class="dropdown-content">
-                            <a href="gleicielly.html">Gleicielly Vieira dos Santos Silva Souza</a>
-                            <a href="deisiane.html">Deisiane Ribeiro S. Elias</a>
-                        </div>
-                    </li>
-                    <li class="dropdown">
-                    <li><a href="advogados-index.html">Advogados Consultores</a></li>
-                    <div class="dropdown-content">
-                        <a href="Gabriel-index.html">Gabriel</a>
-                        <a href="Felipe-index.html">Felipe</a>
-                    </div>
+                    <!-- Link principal -->
+                    <li><a href="index.html">Início</a></li>
+
+                    <!-- Sobre -->
+                    <li><a href="index.html#about">Sobre Nós</a></li>
+
+                    <!-- Corpo Empresarial -->
+                    <!-- Corpo Empresarial -->
+                    <li>
+                        <a href="corpo-empresarial.html">Corpo Empresarial</a>
                     </li>
 
+                    <!-- Advogados Consultores -->
+                    <li>
+                        <a href="#advogados">Advogados Consultores</a>
+                    </li>
+
+                    <!-- Botão de ação -->
                     <li><a href="#contact" class="btn-primary">Solicitar Consulta</a></li>
+
                 </ul>
             </div>
         </nav>
@@ -438,21 +466,22 @@
                 <div class="advogado-card">
                     <img src="advogado_card_1.png" alt="Dr. Ricardo Mendes" class="advogado-card-image">
                     <div class="advogado-card-content">
-                        <h3>Dr. Ricardo Mendes</h3>
+                        <h3>Dr. Felipe Soares</h3>
                         <p>Especialista em Direito Administrativo e Licitações Públicas</p>
-                        <button class="btn-contact">Consultar</button>
+                        <a href="Felipe-index.html" class="btn-contact">Consultar</a>
                     </div>
                 </div>
 
                 <!-- Card 2 -->
                 <div class="advogado-card">
-                    <img src="advogado_card_2.png" alt="Dr. Fernando Costa" class="advogado-card-image">
+                    <img src="advogado_card_2.png" alt="Dr. Gabriel Soares" class="advogado-card-image">
                     <div class="advogado-card-content">
-                        <h3>Dr. Fernando Costa</h3>
+                        <h3>Dr. Gabriel Soares</h3>
                         <p>Especialista em Direito Contratual e Negociações Comerciais</p>
-                        <button class="btn-contact">Consultar</button>
+                        <a href="Gabriel-index.html" class="btn-contact">Consultar</a>
                     </div>
                 </div>
+            </div>
             </div>
         </section>
     </main>
