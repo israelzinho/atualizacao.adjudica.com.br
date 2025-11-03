@@ -84,7 +84,7 @@
             align-items: center;
             gap: 12px;
             margin-left: 60px;
-            /* 🔹 Move o logo um pouco mais para a direita */
+            text-decoration: none !important;
         }
 
         .navbar .logo-img {
@@ -96,17 +96,20 @@
             font-size: 20px;
             font-weight: 700;
             color: var(--color-white);
+            text-decoration: none !important;
+            border-bottom: none !important;
         }
 
         .navbar .logo-text p {
             font-size: 12px;
             color: rgba(255, 255, 255, 0.7);
+            text-decoration: none !important;
+            border-bottom: none !important;
         }
 
         .navbar .logo a {
-            text-decoration: none;
+            text-decoration: none !important;
             color: inherit;
-            /* mantém as cores do h1 e p sem interferência */
         }
 
         /* === LINKS DE NAVEGAÇÃO === */
@@ -125,7 +128,7 @@
         .navbar .nav-links li a {
             color: var(--color-white);
             font-weight: 500;
-            text-decoration: none;
+            text-decoration: none !important;
             transition: color 0.3s ease;
         }
 
@@ -157,9 +160,13 @@
             background: linear-gradient(90deg, #ffd65b, #e0b229);
         }
 
-        /* === ESCONDE O MENU HAMBÚRGUER NO DESKTOP === */
         .navbar .menu-toggle {
-            display: none !important;
+            display: none;
+            background: none;
+            border: none;
+            color: var(--color-white);
+            font-size: 26px;
+            cursor: pointer;
         }
 
         /* === DROPDOWN === */
@@ -200,28 +207,19 @@
 
         /* === RESPONSIVIDADE (MOBILE) === */
         @media (max-width: 768px) {
-            .navbar {
-                padding: 10px 0;
-            }
-
-            .navbar .menu-toggle {
-                display: block;
-                background: none;
-                border: none;
-                color: white;
-                font-size: 26px;
-                cursor: pointer;
+            .navbar .container {
+                padding: 10px 20px;
             }
 
             .navbar .nav-links {
                 display: none;
                 flex-direction: column;
+                align-items: center;
                 width: 100%;
-                background-color: var(--color-primary-blue);
+                background-color: var(--color-white);
                 position: absolute;
                 top: 70px;
                 left: 0;
-                text-align: center;
                 padding: 20px 0;
                 box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
             }
@@ -231,9 +229,18 @@
             }
 
             .navbar .nav-links li a {
-                color: white;
+                color: var(--color-primary-blue);
                 font-size: 18px;
                 padding: 10px 0;
+            }
+
+            .navbar .menu-toggle {
+                display: block;
+                background: none;
+                border: none;
+                color: var(--color-white);
+                font-size: 26px;
+                cursor: pointer;
             }
 
             /* === DROPDOWN MOBILE === */
@@ -518,7 +525,6 @@
                 </button>
 
                 <!-- Itens de navegação -->
-                <!-- Itens de navegação -->
                 <ul class="nav-links">
                     <!-- Link principal -->
                     <li><a href="index.html">Início</a></li>
@@ -526,19 +532,20 @@
                     <!-- Sobre -->
                     <li><a href="index.html#about">Sobre Nós</a></li>
 
-                    <!-- Corpo Empresarial -->
+                    <!-- Corpo Empresarial (volta para o index e rola até a seção "lawyers") -->
                     <li>
                         <a href="index.html#lawyers">Corpo Empresarial</a>
                     </li>
 
-                    <!-- Advogados Consultores -->
+                    <!-- Advogados Consultores (fica na página atual dos advogados) -->
                     <li>
-                        <a href="advogados-index.html">Corpo Empresarial</a>
+                        <a href="advogados-index.html">Advogados Consultores</a>
                     </li>
 
                     <!-- Botão de ação -->
                     <li><a href="#contact" class="btn-primary">Solicitar Consulta</a></li>
                 </ul>
+
             </div>
         </nav>
     </header>
