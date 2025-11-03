@@ -157,7 +157,11 @@ ul {
 }
 
 
-/* === AJUSTE VISUAL COMPLETO DA NAVBAR === */
+/* ========================================
+   NAVBAR - VERSÃO LIMPA E COMPLETA
+======================================== */
+
+/* === ESTRUTURA BASE === */
 .navbar {
     position: fixed;
     top: 0;
@@ -177,14 +181,15 @@ ul {
     max-width: 1300px;
     margin: 0 auto;
     overflow: visible;
-    /* <-- ESSENCIAL pro dropdown aparecer */
+    /* Permite dropdown aparecer */
 }
 
-/* Logo */
+/* === LOGO === */
 .navbar .logo {
     display: flex;
     align-items: center;
     gap: 12px;
+    text-decoration: none !important;
 }
 
 .navbar .logo-img {
@@ -196,31 +201,31 @@ ul {
     font-size: 20px;
     font-weight: 700;
     color: var(--color-white);
+    text-decoration: none !important;
 }
 
 .navbar .logo-text p {
     font-size: 12px;
     color: rgba(255, 255, 255, 0.7);
+    text-decoration: none !important;
 }
 
-/* Links */
+/* === LINKS DE NAVEGAÇÃO === */
 .navbar .nav-links {
     display: flex;
     align-items: center;
     gap: 18px;
-    /* antes era 25px */
     list-style: none;
 }
 
 .navbar .nav-links li:last-child {
     margin-left: 10px;
-    /* afasta levemente o botão dourado */
 }
 
 .navbar .nav-links li a {
     color: var(--color-white);
     font-weight: 500;
-    text-decoration: none;
+    text-decoration: none !important;
     transition: color 0.3s ease;
 }
 
@@ -228,14 +233,14 @@ ul {
     color: var(--color-accent-gold);
 }
 
-/* Botão principal */
+/* === BOTÃO PRINCIPAL === */
 .navbar .btn-primary {
     background: linear-gradient(90deg, #f2c94c, #d4a017);
     color: var(--color-primary-blue);
     padding: 8px 18px;
     border-radius: 8px;
     font-weight: 600;
-    text-decoration: none;
+    text-decoration: none !important;
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
@@ -244,6 +249,7 @@ ul {
     background: linear-gradient(90deg, #ffd65b, #e0b229);
 }
 
+/* === BOTÃO HAMBÚRGUER (oculto no desktop) === */
 .navbar .menu-toggle {
     display: none;
     background: none;
@@ -312,68 +318,31 @@ ul {
     transform: rotate(180deg);
 }
 
-/* === RESPONSIVIDADE === */
-@media (max-width: 768px) {
-    .navbar .container {
-        padding: 10px 20px;
-    }
 
-    .navbar .nav-links {
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        background-color: var(--color-white);
-        position: absolute;
-        top: 70px;
-        left: 0;
-        padding: 20px 0;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-    }
 
-    .navbar .nav-links.active {
-        display: flex;
-    }
+/* Dropdown no mobile */
+.dropdown-content {
+    position: static;
+    background-color: transparent;
+    box-shadow: none;
+    margin-top: 0;
+    padding-left: 15px;
+}
 
-    .navbar .nav-links li a {
-        color: var(--color-primary-blue);
-        font-size: 18px;
-        padding: 10px 0;
-    }
+.dropdown.active .dropdown-content {
+    display: block;
+}
 
-    .navbar .menu-toggle {
-        display: block;
-        background: none;
-        border: none;
-        color: var(--color-white);
-        font-size: 26px;
-        cursor: pointer;
-    }
+.dropdown-content a {
+    background-color: var(--color-white);
+    margin: 5px 0;
+    border-radius: 6px;
+}
 
-    /* Dropdown no mobile */
-    .dropdown-content {
-        position: static;
-        background-color: transparent;
-        box-shadow: none;
-        margin-top: 0;
-        padding-left: 15px;
-    }
-
-    .dropdown.active .dropdown-content {
-        display: block;
-    }
-
-    .dropdown-content a {
-        background-color: var(--color-white);
-        margin: 5px 0;
-        border-radius: 6px;
-    }
-
-    .dropdown .dropbtn {
-        justify-content: space-between;
-        width: 100%;
-        color: var(--color-primary-blue);
-    }
+.dropdown .dropbtn {
+    justify-content: space-between;
+    width: 100%;
+    color: var(--color-primary-blue);
 }
 
 
@@ -694,9 +663,12 @@ ul {
 
 .about-approach {
     background-color: var(--color-white);
-    padding: 30px;
+    padding: 40px;
+    /* aumenta o espaçamento interno */
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    min-height: 100%;
+    /* faz o card ocupar toda a altura disponível */
 }
 
 .approach-title {
@@ -710,7 +682,8 @@ ul {
     display: flex;
     align-items: flex-start;
     gap: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    /* aumenta o espaço entre os itens */
 }
 
 .approach-item i {
@@ -1090,17 +1063,27 @@ ul {
     align-items: center;
     justify-content: center;
     gap: 15px;
-    color: var(--color-light-gray);
 }
 
+/* Títulos das seções organizadas */
+.organized-section h3 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Cor do título quando a seção tem fundo escuro */
 .organized-section.bg-dark h3 {
-    color: var(--color-white);
+    color: var(--color-white) !important;
 }
 
-.organized-section.bg-light h3 {
-    color: var(--color-primary-blue);
-}
 
+/* Ícone sempre dourado */
 .organized-section h3 i {
     font-size: 36px;
     color: var(--color-accent-gold);
@@ -1262,7 +1245,7 @@ ul {
 @media (max-width: 768px) {
     .cert-card-organized {
         flex-direction: row;
-        n
+
         /* garante ícone + texto lado a lado */
         align-items: center;
         gap: 12px;
@@ -2327,18 +2310,7 @@ footer .btn-secondary:hover {
         padding: 40px 0;
     }
 
-    .organized-section h3 {
-        font-size: 32px;
-        font-weight: 700;
-        margin-bottom: 40px;
-        text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 15px;
-        color: var(--color-light-gray);
-        /* ← adiciona esta linha */
-    }
+
 
     .timeline-organized {
         grid-template-columns: 1fr;
@@ -2389,91 +2361,6 @@ footer .btn-secondary:hover {
 
 
 
-/* ============================================
-   TOGGLE SWITCH DE TEMA (MODO ESCURO/CLARO)
-   ============================================ */
-
-.theme-toggle-container {
-    margin-left: 15px;
-}
-
-.theme-toggle-checkbox {
-    display: none;
-}
-
-.theme-toggle-label {
-    display: block;
-    width: 60px;
-    height: 30px;
-    background: var(--color-light-gray);
-    /* Cor de fundo para o modo claro */
-    border-radius: 15px;
-    cursor: pointer;
-    position: relative;
-    transition: background 0.6s ease;
-}
-
-.theme-toggle-slider {
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 24px;
-    height: 24px;
-    background: var(--color-primary-blue);
-    /* Cor do slider no modo claro */
-    border-radius: 50%;
-    transition: transform 0.6s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.theme-icon-sun,
-.theme-icon-moon {
-    position: absolute;
-    font-size: 12px;
-    transition: opacity 0.6s ease, color 0.6s ease;
-}
-
-.theme-icon-sun {
-    color: var(--color-accent-gold);
-    /* Cor do sol no modo claro */
-    opacity: 1;
-}
-
-.theme-icon-moon {
-    color: var(--color-white);
-    /* Cor da lua no modo claro (inicialmente invisível) */
-    opacity: 0;
-}
-
-/* Estado checked (modo escuro) */
-.theme-toggle-checkbox:checked+.theme-toggle-label {
-    background: var(--color-primary-blue);
-    /* Fundo do toggle no modo escuro */
-}
-
-.theme-toggle-checkbox:checked+.theme-toggle-label .theme-toggle-slider {
-    transform: translateX(30px);
-    background: var(--color-accent-gold);
-    /* Cor do slider no modo escuro */
-}
-
-.theme-toggle-checkbox:checked+.theme-toggle-label .theme-icon-sun {
-    opacity: 0;
-}
-
-.theme-toggle-checkbox:checked+.theme-toggle-label .theme-icon-moon {
-    opacity: 1;
-    color: var(--color-white);
-    /* Cor da lua no modo escuro */
-}
-
-/* Hover effects */
-.theme-toggle-label:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
 
 /* ============================================
    MODO ESCURO
@@ -2496,10 +2383,9 @@ body.dark-mode {
     color: var(--color-text-dark);
 }
 
-/* Navbar e Footer mantêm o azul marinho escuro */
 body.dark-mode .navbar {
     background-color: var(--color-primary-blue);
-    box-shadow: 0 2px 10px var(--color-shadow);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 body.dark-mode footer {
@@ -2576,7 +2462,6 @@ body.dark-mode li {
     color: var(--color-text-light);
 }
 
-/* Links da Navbar */
 body.dark-mode .nav-links a {
     color: var(--color-white);
 }
@@ -2930,14 +2815,7 @@ body.dark-mode .contact-info-column .contact-info-container {
         align-items: center;
     }
 
-    .navbar .menu-toggle {
-        display: none;
-        background: none;
-        border: none;
-        color: var(--color-white);
-        font-size: 26px;
-        cursor: pointer;
-    }
+
 
     .navbar .nav-links {
         display: none;
@@ -3030,35 +2908,3 @@ body.dark-mode .contact-info-column .contact-info-container {
         gap: 15px !important;
     }
 }
-
-
-@media (max-width: 768px) {
-
-    /* Fundo do menu mobile */
-    .navbar .nav-links {
-        background-color: var(--color-primary-blue);
-        /* fundo azul */
-    }
-
-    /* Links visíveis no mobile */
-    .navbar .nav-links li a {
-        color: white !important;
-        /* cor do texto */
-        font-weight: 500;
-        padding: 10px 0;
-        display: block;
-        text-decoration: none;
-        position: relative;
-    }
-
-    .navbar .nav-links li a::after {
-        background-color: white;
-        /* linha sublinhada branca no hover */
-    }
-
-    .navbar .nav-links li a:hover {
-        color: var(--color-accent-gold);
-        /* fica dourado no hover */
-    }
-
-    s
