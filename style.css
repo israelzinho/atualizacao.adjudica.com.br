@@ -2810,3 +2810,17 @@ body.dark-mode .contact-info-column .contact-info-container {
         display: none;
     }
 }
+
+
+@media (max-width: 768px) {
+
+    /* Some com a setinha */
+    .dropbtn i.fas.fa-chevron-down {
+        display: none !important;
+    }
+
+    /* Some com as opções do dropdown */
+    .dropdown-content {
+        display: none !important;
+    }
+}
