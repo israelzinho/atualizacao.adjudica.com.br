@@ -51,9 +51,9 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             padding: 10px 0;
-            /* 🔹 Navbar mais fina */
         }
 
+        /* Container interno */
         .navbar .container {
             display: flex;
             justify-content: space-between;
@@ -64,66 +64,48 @@
             overflow: visible;
         }
 
-   /* Logo */
-.navbar .logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none !important;
-}
+        /* === LOGO === */
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none !important;
+        }
 
-.navbar .logo-img {
-    height: 48px;
-    width: auto;
-}
+        .navbar .logo-img {
+            height: 48px;
+            width: auto;
+        }
 
-.navbar .logo-text h1 {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--color-white);
-    text-decoration: none !important;
-    border-bottom: none !important;
-}
+        .navbar .logo-text h1 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--color-white);
+            text-decoration: none !important;
+        }
 
-.navbar .logo-text p {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none !important;
-    border-bottom: none !important;
-}
-
-/* Links */
-.navbar .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    list-style: none;
-}
-
-.navbar .nav-links li:last-child {
-    margin-left: 10px;
-}
-
-.navbar .nav-links li a {
-    color: var(--color-white);
-    font-weight: 500;
-    text-decoration: none !important;
-    transition: color 0.3s ease;
-}
-
-.navbar .nav-links li a:hover {
-    color: var(--color-accent-gold);
-}
-
-        .navbar .nav-links li:last-child {
-            margin-left: 30px;
+        .navbar .logo-text p {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none !important;
         }
 
         /* === LINKS === */
+        .navbar .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            list-style: none;
+        }
+
+        .navbar .nav-links li:last-child {
+            margin-left: 10px;
+        }
+
         .navbar .nav-links li a {
             color: var(--color-white);
             font-weight: 500;
-            text-decoration: none;
+            text-decoration: none !important;
             transition: color 0.3s ease;
         }
 
@@ -131,7 +113,7 @@
             color: var(--color-accent-gold);
         }
 
-        /* ===== BOTÃO PADRÃO ===== */
+        /* === BOTÃO PADRÃO === */
         .btn-primary {
             background: linear-gradient(90deg, #f2c94c, #d4a017);
             color: var(--color-navy-dark);
@@ -148,11 +130,6 @@
             background: linear-gradient(90deg, #ffd65b, #e0b229);
             transform: translateY(-2px);
             color: var(--color-navy-dark);
-        }
-
-        .navbar .btn-primary:hover {
-            transform: translateY(-2px);
-            background: linear-gradient(90deg, #ffd65b, #e0b229);
         }
 
         /* === ESCONDE O MENU HAMBÚRGUER NO DESKTOP === */
@@ -202,36 +179,62 @@
                 padding: 10px 0;
             }
 
-            .navbar .menu-toggle {
-                display: block;
-                background: none;
-                border: none;
-                color: white;
-                font-size: 26px;
-                cursor: pointer;
+            .navbar .container {
+                padding: 10px 20px;
             }
 
+            /* Botão hamburguer */
+            .navbar .menu-toggle {
+                display: block !important;
+                background: none;
+                border: none;
+                color: var(--color-white);
+                font-size: 28px;
+                cursor: pointer;
+                z-index: 2001;
+            }
+
+            /* Menu recolhido */
             .navbar .nav-links {
                 display: none;
                 flex-direction: column;
+                justify-content: center;
+                align-items: center;
                 width: 100%;
-                background-color: var(--color-primary-blue);
+                background-color: var(--color-navy-dark);
+                /* 🔹 fundo escuro correto */
                 position: absolute;
                 top: 70px;
                 left: 0;
                 text-align: center;
-                padding: 20px 0;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+                padding: 25px 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+                z-index: 2000;
             }
 
+            /* Menu aberto */
             .navbar .nav-links.active {
                 display: flex;
             }
 
+            /* Links do menu mobile */
+            .navbar .nav-links li {
+                width: 100%;
+            }
+
             .navbar .nav-links li a {
-                color: white;
+                display: block;
+                width: 100%;
+                color: var(--color-white) !important;
+                /* 🔹 texto branco */
                 font-size: 18px;
-                padding: 10px 0;
+                padding: 12px 16px;
+                text-align: center;
+                transition: background 0.3s ease;
+            }
+
+            .navbar .nav-links li a:hover {
+                background-color: rgba(255, 255, 255, 0.08);
             }
 
             /* === DROPDOWN MOBILE === */
@@ -270,7 +273,8 @@
             }
 
             .dropdown-content a {
-                background-color: var(--color-primary-blue);
+                background-color: var(--color-navy-dark);
+                /* 🔹 fundo escuro */
                 color: var(--color-white);
                 font-size: 16px;
                 padding: 10px 15px;
@@ -286,7 +290,6 @@
                 display: none;
             }
         }
-
 
 
         /* ===== MAIN CONTENT - PROFILE PAGE ===== */
