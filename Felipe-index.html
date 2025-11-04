@@ -29,11 +29,16 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--color-blue-suave);
-            /* mantido apenas como valor padrão fallback */
-            background-color: var(--color-white);
-            /* esse valor pode ser sobrescrito pela seção específica */
+            background-color: #0F1419;
+            /* 🔹 Fundo escuro padrão da página */
             margin: 0;
             padding: 0;
+        }
+
+        /* Corrige o deslocamento causado pela navbar fixa */
+        main {
+            margin-top: 80px;
+            /* 🔹 Afasta o conteúdo da navbar fixa */
         }
 
         /* --- Correção: evitar que regras de seção sobrescrevam a família da fonte --- */
@@ -63,9 +68,15 @@
             width: 100%;
             background-color: var(--color-navy-dark) !important;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
+            z-index: 3000 !important;
+            /* muito alto para garantir sobreposição */
             padding: 10px 0;
             /* 🔹 Navbar mais fina */
+        }
+
+        /* garante que o overlay do hero fique atrás */
+        .hero-overlay {
+            z-index: 100 !important;
         }
 
         .navbar .container {
@@ -160,6 +171,7 @@
             background: linear-gradient(90deg, #ffd65b, #e0b229);
         }
 
+        /* botão hamburguer fica oculto no desktop por padrão */
         .navbar .menu-toggle {
             display: none;
             background: none;
@@ -167,6 +179,8 @@
             color: var(--color-white);
             font-size: 26px;
             cursor: pointer;
+            z-index: 3002;
+            /* acima da navbar */
         }
 
         /* === DROPDOWN === */
@@ -205,96 +219,150 @@
             display: block;
         }
 
-        /* === RESPONSIVIDADE (MOBILE) === */
+        /* ===== MOBILE ===== */
         @media (max-width: 768px) {
+
             .navbar .container {
                 padding: 10px 20px;
+                position: relative;
+                /* menu absolute relativo a este container */
+                z-index: 3002;
             }
 
+            /* menu: oculto por padrão */
             .navbar .nav-links {
-                display: none;
+                display: none !important;
                 flex-direction: column;
+                justify-content: center;
+                /* centraliza verticalmente */
                 align-items: center;
+                /* centraliza horizontalmente */
                 width: 100%;
-                background-color: var(--color-white);
+                background-color: var(--color-navy-dark) !important;
+                /* 🔹 fundo azul escuro */
                 position: absolute;
-                top: 70px;
+                top: 100%;
+                /* posiciona logo abaixo da navbar */
                 left: 0;
-                padding: 20px 0;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+                padding: 30px 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+                z-index: 3001 !important;
+                transform-origin: top center;
             }
 
+            /* menu aberto */
             .navbar .nav-links.active {
-                display: flex;
+                display: flex !important;
+            }
+
+            .navbar .nav-links li {
+                width: 100%;
             }
 
             .navbar .nav-links li a {
-                color: var(--color-primary-blue);
-                font-size: 18px;
-                padding: 10px 0;
-            }
-
-            .navbar .menu-toggle {
                 display: block;
-                background: none;
-                border: none;
-                color: var(--color-white);
-                font-size: 26px;
-                cursor: pointer;
-            }
-
-            /* === DROPDOWN MOBILE === */
-            .dropdown {
-                position: relative;
-            }
-
-            .dropdown .dropbtn {
-                display: flex;
-                align-items: center;
-                gap: 5px;
-                cursor: pointer;
-            }
-
-            .dropdown .dropbtn i {
-                font-size: 12px;
-                transition: transform 0.3s ease;
-            }
-
-            .dropdown:hover .dropbtn i {
-                transform: rotate(180deg);
-            }
-
-            .dropdown-content {
-                position: static;
-                background-color: transparent;
-                box-shadow: none;
-                display: none;
-                margin-top: 0;
-                padding-left: 0;
                 width: 100%;
+                color: var(--color-white) !important;
+                /* 🔹 texto branco */
+                font-size: 18px;
+                padding: 12px 16px;
+                text-align: center;
             }
 
-            .dropdown.active .dropdown-content {
-                display: block;
+            .navbar .nav-links li a:hover {
+                background: rgba(0, 0, 0, 0.04);
             }
 
-            .dropdown-content a {
-                background-color: var(--color-primary-blue);
-                color: var(--color-white);
-                font-size: 16px;
-                padding: 10px 15px;
-                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            /* botão hamburguer visível no mobile */
+            .navbar .menu-toggle {
+                display: block !important;
+                color: var(--color-white) !important;
+                font-size: 28px !important;
+                z-index: 3003 !important;
             }
 
-            .dropdown-content a:hover {
-                background-color: var(--color-accent-gold);
-                color: var(--color-primary-blue);
-            }
-
-            .navbar .logo-text {
+            /* dropdowns: garantir comportamento alinhado */
+            .navbar .dropdown-content {
+                position: static !important;
+                background-color: var(--color-white) !important;
+                box-shadow: none !important;
+                width: 100% !important;
                 display: none;
+                flex-direction: column;
+            }
+
+            .navbar .dropdown:hover .dropdown-content,
+            .navbar .dropdown.open .dropdown-content {
+                display: flex !important;
+            }
+
+            .navbar .dropdown-content a {
+                color: var(--color-primary-blue) !important;
+                padding: 10px 16px !important;
+                width: 100% !important;
+            }
+
+            /* proteção contra overflow lateral */
+            html,
+            body {
+                overflow-x: hidden !important;
             }
         }
+
+        /* === DROPDOWN MOBILE === */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown .dropbtn {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .dropdown .dropbtn i {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown:hover .dropbtn i {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-content {
+            position: static;
+            background-color: transparent;
+            box-shadow: none;
+            display: none;
+            margin-top: 0;
+            padding-left: 0;
+            width: 100%;
+        }
+
+        .dropdown.active .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            background-color: var(--color-primary-blue);
+            color: var(--color-white);
+            font-size: 16px;
+            padding: 10px 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--color-accent-gold);
+            color: var(--color-primary-blue);
+        }
+
+        /* Mostra o texto no desktop */
+        .navbar .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
 
 
 
@@ -429,12 +497,24 @@
             color: var(--color-white);
         }
 
-        /* ===== RESPONSIVE ===== */
+        /* === RESPONSIVIDADE (MOBILE) === */
         @media (max-width: 768px) {
-            .navbar .menu-toggle {
-                display: block;
+            .navbar {
+                padding: 10px 0;
             }
 
+            /* Botão hamburguer */
+            .navbar .menu-toggle {
+                display: block !important;
+                background: none;
+                border: none;
+                color: var(--color-white);
+                font-size: 26px;
+                cursor: pointer;
+                z-index: 3002;
+            }
+
+            /* Menu que aparece ao clicar no botão */
             .navbar .nav-links {
                 display: none;
                 position: absolute;
@@ -442,53 +522,69 @@
                 left: 0;
                 right: 0;
                 flex-direction: column;
-                background-color: var(--color-navy-dark);
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+                background-color: var(--color-navy-dark) !important;
+                /* 💙 cor igual à navbar */
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+                text-align: center;
+                padding: 20px 0;
+                z-index: 3001;
             }
 
+            /* Ativo (ao clicar no hamburguer) */
             .navbar .nav-links.active {
                 display: flex;
             }
 
+            /* Linhas divisórias e links */
             .navbar .nav-links li {
                 width: 100%;
                 border-bottom: 1px solid var(--color-navy-light);
             }
 
             .navbar .nav-links a {
+                color: var(--color-white) !important;
+                font-size: 18px;
                 padding: 15px 20px;
+                text-decoration: none;
+                transition: color 0.3s ease;
             }
 
-            .navbar .dropdown-content {
-                position: static;
-                display: none;
-                box-shadow: none;
-                background-color: var(--color-navy-light);
-                border: none;
-            }
-
-            .navbar .dropdown.active .dropdown-content {
-                display: block;
-            }
-
-            .profile-header {
-                flex-direction: column;
-                text-align: center;
-                gap: 20px;
-            }
-
-            .profile-info h1 {
-                font-size: 30px;
-            }
-
-            .profile-info .specialties {
-                font-size: 16px;
-            }
-
-            .profile-info .btn-contact {
-                width: 100%;
+            .navbar .nav-links a:hover {
+                color: var(--color-gold) !important;
+                /* ✨ destaque no hover */
             }
         }
+
+        .navbar .dropdown-content {
+            position: static;
+            display: none;
+            box-shadow: none;
+            background-color: var(--color-navy-light);
+            border: none;
+        }
+
+        .navbar .dropdown.active .dropdown-content {
+            display: block;
+        }
+
+        .profile-header {
+            flex-direction: column;
+            text-align: center;
+            gap: 20px;
+        }
+
+        .profile-info h1 {
+            font-size: 30px;
+        }
+
+        .profile-info .specialties {
+            font-size: 16px;
+        }
+
+        .profile-info .btn-contact {
+            width: 100%;
+        }
+
 
         @media (max-width: 480px) {
             .profile-image {
@@ -543,8 +639,12 @@
                     </li>
 
                     <!-- Botão de ação -->
-                    <li><a href="#contact" class="btn-primary">Solicitar Consulta</a></li>
-                </ul>
+                    <li>
+                        <a href="https://web.whatsapp.com/send?phone=5562983399400&text=" class="btn-primary"
+                            target="_blank" rel="noopener noreferrer">
+                            Solicitar Consulta
+                        </a>
+                    </li>
 
             </div>
         </nav>
