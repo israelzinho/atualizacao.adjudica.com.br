@@ -189,94 +189,129 @@
             display: block;
         }
 
+        /* === AJUSTE RESPONSIVO === */
         @media (max-width: 768px) {
+
             .navbar .container {
                 padding: 10px 20px;
+                position: relative;
+                z-index: 1000;
             }
 
+            /* MENU PRINCIPAL (oculto por padrão) */
             .navbar .nav-links {
                 display: none;
                 flex-direction: column;
                 align-items: center;
                 width: 100%;
-                background-color: var(--color-white);
+                background-color: var(--color-primary-blue);
+                /* fundo azul para combinar com a navbar */
                 position: absolute;
                 top: 70px;
                 left: 0;
                 padding: 20px 0;
                 box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+                z-index: 999;
             }
 
+            /* Quando o menu é ativado */
             .navbar .nav-links.active {
                 display: flex;
             }
 
+            /* LINKS DO MENU */
             .navbar .nav-links li a {
-                color: var(--color-primary-blue);
+                color: var(--color-white);
                 font-size: 18px;
                 padding: 10px 0;
+                text-align: center;
+                width: 100%;
             }
 
+            .navbar .nav-links li a:hover {
+                background-color: rgba(255, 255, 255, 0.15);
+            }
+
+            /* Mostra o botão hamburguer no mobile */
             .navbar .menu-toggle {
                 display: block;
                 background: none;
                 border: none;
                 color: var(--color-white);
-                font-size: 26px;
+                font-size: 28px;
                 cursor: pointer;
+                z-index: 1001;
             }
 
-            /* === DROPDOWN MOBILE === */
-            .dropdown {
-                position: relative;
-            }
-
-            .dropdown .dropbtn {
-                display: flex;
-                align-items: center;
-                gap: 5px;
-                cursor: pointer;
-            }
-
-            .dropdown .dropbtn i {
-                font-size: 12px;
-                transition: transform 0.3s ease;
-            }
-
-            .dropdown:hover .dropbtn i {
-                transform: rotate(180deg);
-            }
-
-            .dropdown-content {
+            /* Garante que dropdowns também se comportem bem no mobile */
+            .navbar .dropdown-content {
                 position: static;
-                background-color: transparent;
+                background-color: var(--color-primary-blue);
                 box-shadow: none;
-                display: none;
-                margin-top: 0;
-                padding-left: 0;
                 width: 100%;
             }
 
-            .dropdown.active .dropdown-content {
-                display: block;
-            }
-
-            .dropdown-content a {
-                background-color: var(--color-primary-blue);
+            .navbar .dropdown-content a {
                 color: var(--color-white);
-                font-size: 16px;
-                padding: 10px 15px;
-                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                padding: 10px 0;
             }
 
-            .dropdown-content a:hover {
-                background-color: var(--color-accent-gold);
-                color: var(--color-primary-blue);
+            .navbar .dropdown-content a:hover {
+                background-color: rgba(255, 255, 255, 0.15);
             }
+        }
 
-            .navbar .logo-text {
-                display: none;
-            }
+        /* === DROPDOWN MOBILE === */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown .dropbtn {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .dropdown .dropbtn i {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown:hover .dropbtn i {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-content {
+            position: static;
+            background-color: transparent;
+            box-shadow: none;
+            display: none;
+            margin-top: 0;
+            padding-left: 0;
+            width: 100%;
+        }
+
+        .dropdown.active .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            background-color: var(--color-primary-blue);
+            color: var(--color-white);
+            font-size: 16px;
+            padding: 10px 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--color-accent-gold);
+            color: var(--color-primary-blue);
+        }
+
+        .navbar .logo-text {
+            display: none;
+        }
         }
 
 
